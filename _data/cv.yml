@@ -16,33 +16,32 @@
       year: 2022-2027
       description:
         - Cummulative GPA of 88.3% (4.2)
-        - Enrolled in Co-op program
-        contents: 
+        - title: Enrolled in Co-op program
+          contents: 
             - Next available work term:' May-August 2024
-        - Relevant Courses
-        contents:
+        - title: Relevant Courses
+          contents:
             - Software Construction I
             - Computing Systems I
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Mechanical Engineering Intern 
+      institution: Acuren, Richmond BC
+      year: May 2023 - August 2023
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Performed mechanical tests including tensile and impact tests, utilizing industry-standard equipment and procedures within Acuren’s accredited engineering and metallurgical laboratory to validate material quality.
+        - Collaborated with interdisciplinary teams to effectively oversee and implement multiple projects simultaneously, while ensuring strict adherence to project timelines and financial constraints.
+        - •	Generated comprehensive technical reports summarizing test results, observations, and recommendations, bolstering the organization's knowledge base, and providing critical documentation.
+    
+    - title: Electrical Designer 
+      institution: UBC Formula Electric, Vancouver BC
+      year: September 2022 - Present
       description:
-        - Description 1.
-        - Description 2.
+        - Collaborated in the development and construction of the electric vehicle, Thruna, placing 2nd in battery efficiency and 21st overall out of 69 teams in the 2023 Formula SAE Electric competition.
+        - Designed and validated the Tractive System Active Light PCB board with Altium ensuring compliance with competition standards, enhancing functionality, and prioritizing driver safety.
+        - Implemented, organized, and improved the vehicles wiring and board connections through Altium, and within the physical vehicle to effectively enhance firmware-hardware synergy.
 
     - title: Director
       institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
