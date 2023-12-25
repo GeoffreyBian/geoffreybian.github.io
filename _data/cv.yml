@@ -13,7 +13,7 @@
   contents:
     - title: "Bachelor's of Applied Sciences in Computer Engineering"
       institution: University of British Columbia
-      year: 2022-2027
+      year: 2022 - 2027
       description:
         - "Cumulative GPA of 88.3% (4.2)"
         - title: "Next available Co-op work term"
@@ -29,7 +29,7 @@
   contents:
     - title: "Electrical Designer"
       institution: UBC Formula Electric, Vancouver BC
-      year: "September 2022 - Present"
+      year: 2022 - Present
       description:
         - "Collaborated in the development and construction of the electric vehicle, Thruna, placing 2nd in battery efficiency and 21st overall out of 69 teams in the 2023 Formula SAE Electric competition."
         - "Designed and validated the Tractive System Active Light PCB board with Altium ensuring compliance with competition standards, enhancing functionality, and prioritizing driver safety."
@@ -37,7 +37,7 @@
 
     - title: "Mechanical Engineering Intern"
       institution: Acuren, Richmond BC
-      year: "May 2023 - August 2023"
+      year: 2023
       description:
         - "Performed mechanical tests including tensile and impact tests, utilizing industry-standard equipment and procedures within Acuren's accredited engineering and metallurgical laboratory to validate material quality."
         - "Collaborated with interdisciplinary teams to effectively oversee and implement multiple projects simultaneously, while ensuring strict adherence to project timelines and financial constraints."
@@ -45,21 +45,21 @@
 
     - title: "Content Creator"
       institution: West Richmond Community Center, Richmond BC
-      year: "June 2021 - August 2022"
+      year: 2021 - 2022
       description:
         - "Utilized photography and graphic design tools to revamp the community image of West Richmond's basketball camp, resulting in a more compelling and effective brand representation."
         - "Leveraged various social and networking platforms to promote the camp and establish connections with patrons, expanding outreach and engagement (22% growth over summer 2021)."
 
     - title: "Ice Hockey Referee"
       institution: BC Hockey, Vancouver BC
-      year: "September 2016 - Present"
+      year: 2016 - Present
       description:
         - "Demonstrating teamwork and flexibility through working with other officials to create a safe hockey environment for players, coaches, and parents."
         - "Managed on-ice conflicts, while ensuring impartiality to maintain the integrity of the game and uphold sportsmanship standards."
 
     - title: "Learn To Skate Instructor"
       institution: Richmond Arenas Community Association, Richmond BC
-      year: "July 2021 - March 2022"
+      year: 2021 - 2022
       description:
         - "Executed a variety of high-quality and stimulating skating activities for children ages 4-16, while fostering a safe and dynamic learning environment."
 
@@ -67,13 +67,13 @@
   type: time_table
   contents:
     - title: "Internet of Things Server"
-      year: "November 2023 - December 2023"
+      year: 2023
       description:
         - "Developed a robust IoT server to provide clients with seamless access to toggle services and prediction functionalities for actuators and sensors."
         - "Identified and resolved complex issues within the IoT server to ensure the system's stability and reliability."
 
     - title: "Audio Manipulation System"
-      year: "September 2023 - October 2023"
+      year: 2023
       description:
         - "Implemented Fourier Transform algorithms to analyze audio signals, enabling the conversion of audio data from the time domain to the frequency domain for advanced analysis."
         - "Developed and optimized audio filtration algorithms, including noise reduction, pitch shifting, and equalization, enhancing audio quality."
