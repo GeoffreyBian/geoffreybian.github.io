@@ -1,7 +1,7 @@
 ---
 layout: page
 title: IoT Server
-description: Internet of Things server to provide actuator and sensor functionalities from client requests
+description: Internet of Things server to provide actuator and sensor functionalities to clients
 img: assets/img/iot.jpg
 importance: 2
 category: work
