@@ -14,6 +14,8 @@ This application sorted these items based on time and provided the user with the
 
 This project introduced me to the concept of data abstraction, where different encodings of information, whether it be an event, reminder, or goal, can be stored through a filing system and kept securely until the data is requested at a future point in time. 
 
+The public repository can be found <a href="https://github.com/GeoffreyBian/To-Do-List">here</a>.
+
 The following highlights some of the application's functionality.
 
 <div class="row">
@@ -54,5 +56,3 @@ The following highlights some of the application's functionality.
 <div class="caption">
     Viewing other events
 </div>
-
-The public repository can be found <a href="https://github.com/GeoffreyBian/To-Do-List">here</a>.
