@@ -8,7 +8,7 @@ category: work
 related_publications: 
 ---
 
-During the 2021 lockdowns, I created a `To-do List` application, which holds the capabilities of tracking events, reminders, and goals through an interactive graphical user interface. This application sorted these items based on time and provided the user with the additional functionalities of removing any item (or mark as complete), increasing progress on goals, and checking the current days to-do items. Furthermore, this project introduced me to the concept of data abstraction, where different encodings of information, whether it be an event, reminder, or goal, can be stored through a filing system and kept securely until the data is requested at a future point in time. 
+During the 2020 lockdowns, I created a `To-do List` application, which holds the capabilities of tracking events, reminders, and goals through an interactive graphical user interface. This application sorted these items based on time and provided the user with the additional functionalities of removing any item (or mark as complete), increasing progress on goals, and checking the current days to-do items. Furthermore, this project introduced me to the concept of data abstraction, where different encodings of information, whether it be an event, reminder, or goal, can be stored through a filing system and kept securely until the data is requested at a future point in time. 
 
 
 <div class="row">
