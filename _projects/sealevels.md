@@ -24,7 +24,7 @@ Please note the graphical user interface was created by UBC's CPEN 221 teaching 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/sealevels1.png" title="Crater Lake without sea levels" %}
+        {% include figure.html path="assets/img/sealevels1.png" title="Crater Lake without sea levels" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -33,7 +33,7 @@ Please note the graphical user interface was created by UBC's CPEN 221 teaching 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/sealevels2.png" title="Crater Lake with water level at 2000 ft" %}
+        {% include figure.html path="assets/img/sealevels2.png" title="Crater Lake with water level at 2000 ft" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -42,7 +42,7 @@ Please note the graphical user interface was created by UBC's CPEN 221 teaching 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/sealevels3.png" title="Crater Lake with water level at 2100 ft" %}
+        {% include figure.html path="assets/img/sealevels3.png" title="Crater Lake with water level at 2100 ft" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

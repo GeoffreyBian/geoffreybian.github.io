@@ -24,7 +24,7 @@ Please note the graphical user interface was created by UBC's CPEN 221 teaching 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/boggle1.png" title="Find the word TEA" %}
+        {% include figure.html path="assets/img/boggle1.png" title="Find the word TEA" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -33,7 +33,7 @@ Please note the graphical user interface was created by UBC's CPEN 221 teaching 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/boggle2.png" title="End of Boggle Game" %}
+        {% include figure.html path="assets/img/boggle2.png" title="End of Boggle Game" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
