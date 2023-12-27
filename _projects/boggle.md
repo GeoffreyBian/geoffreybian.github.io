@@ -17,6 +17,8 @@ A significant revelation was the application of Trie data structures to model th
 
 The Boggle board game application not only provides entertainment but also serves as a testament to the integration of theoretical concepts with practical implementation, offering players an immersive and stimulating gaming experience.
 
+Please note the GUI interface was created by UBC's CPEN 221 teaching team. 
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/boggle1.png" title="Find the word TEA" %}
