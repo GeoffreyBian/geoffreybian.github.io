@@ -3,10 +3,11 @@ layout: page
 title: To-do List
 description: Application to track events, reminders, and goals
 img: assets/img/todo5.png
-importance: 1
+importance: 5
 category: work
 related_publications: 
 ---
+`March 2020 - June 2020`
 
 During the 2020 lockdowns, I created a `To-do List` application, which holds the capabilities of tracking events, reminders, and goals through an interactive graphical user interface. 
 

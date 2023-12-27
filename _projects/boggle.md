@@ -3,9 +3,10 @@ layout: page
 title: Boggle Board Game
 description: Word search game on interactive interface 
 img: assets/img/boggle2.png
-importance: 3
+importance: 2
 category: work
 ---
+`November 2023`
 
 In the creation of the Boggle board game application, I implemented a system where the player faces off against a computer opponent. The objective is to discover words within a Boggle board in the allotted time. Players can form words by traversing not only horizontally and vertically but also diagonally across the randomized board. By finding more words than the computer, the player is victorious. 
 

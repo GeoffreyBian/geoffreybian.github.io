@@ -3,10 +3,11 @@ layout: page
 title: IoT Server
 description: Internet of Things server to provide actuator and sensor functionalities to clients
 img: assets/img/iot.jpg
-importance: 2
+importance: 1
 category: work
 giscus_comments: false
 ---
+`November 2023 - December 2023`
 
 In the course CPEN 221, I was tasked with implementing an Internet of Things (IoT) server. Hence, I designed a system comprising actuators and sensors (referred to as entities). These entities seamlessly communicated with a centralized server (called the Message Handler), creating a dynamic and interconnected IoT environment. Each entity, assigned to a specific client, transmitted events or data to the server.
 

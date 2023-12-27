@@ -1,11 +1,12 @@
 ---
 layout: page
 title: Sea Levels Analysis
-description: Analyzing different terrains to collect data on effect of sea levels rising
+description: Analyzing different terrains to collect data on effect of rising sea levels
 img: assets/img/sealevels2.png
-importance: 4
+importance: 3
 category: work
 ---
+`November 2023`
 
 The Sea Levels Analysis Application is a powerful tool for environmental analytics, providing insight into the potential impact of rising sea levels on our terrain. Its core functionality involves identifying coordinates of a landscape that would be submerged under a specified sea level increase. This application offers a comprehensive view of the areas most vulnerable to sea level changes.
 
