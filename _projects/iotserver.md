@@ -20,7 +20,7 @@ This project served as a rich learning experience, providing insights into criti
 
 In particular, I learned the importance of unit-testing and integration-testing. These methods saved me a lot of time debugging the server and ensurred seamless client-server connection. 
 
-`Real-world Challenges`
+`Application`
 
 The hands-on experience garnered from this project not only bolstered my technical skills but also equipped me with the practical skills needed to manage and optimize distributed IoT environments. This provided a solid foundation for tackling the intricacies and challenges of real-world IoT applications and emphasized the importance of debugging especially with concurrent programs. 
 

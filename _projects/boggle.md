@@ -15,9 +15,11 @@ I employed the principles of graph theory to bring the Boggle board to life. Eac
 
 A significant revelation was the application of Trie data structures to model the dictionary. This sophisticated data structure streamlined the word-checking process. As the computer traversed the board, it consulted the Trie to validate potential words, efficiently halting edge branching if a given path did not align with the Trie structure. This not only optimized the game's performance but also showcased how graphs and data structures can work together to optimize a simple game as such. 
 
+`Application`
+
 The Boggle board game application not only provides entertainment but also serves as a testament to the integration of theoretical concepts with practical implementation, offering players an immersive and stimulating gaming experience.
 
-Please note the GUI interface was created by UBC's CPEN 221 teaching team. 
+Please note the graphical user interface was created by UBC's CPEN 221 teaching team. 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -30,7 +32,7 @@ Please note the GUI interface was created by UBC's CPEN 221 teaching team.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/boggle2.png" title="End of Boggle Game" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/boggle2.png" title="End of Boggle Game" %}
     </div>
 </div>
 <div class="caption">
