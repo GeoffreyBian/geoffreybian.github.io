@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: My personal projects
+description: Some of my software projects as of December 2023.
 nav: true
 nav_order: 2
 display_categories: [work, fun]
