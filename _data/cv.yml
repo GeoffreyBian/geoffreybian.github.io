@@ -27,21 +27,30 @@
 - title: Experience
   type: time_table
   contents:
-    - title: "Electrical Designer"
-      institution: UBC Formula Electric, Vancouver BC
-      year: 2022 - Present
+    - title: "Software Engineer Intern"
+      institution: Rivian Automotive, Vancouver BC
+      year: 2024 - Present
       description:
-        - "Collaborated in the development and construction of the electric vehicle, Thruna, placing 2nd in battery efficiency and 21st overall out of 69 teams in the 2023 Formula SAE Electric competition."
+        - "Developed customer-facing Body Control features in C ensuring adherence to system requirements, while implementing rigorous testing procedures."
+        - "Deployed unit tests with GoogleTest and automated Python testing scripts for Hardware-in-the-Loop (HiL) systems to ensure comprehensive and efficient testing of vehicle software, and satisfy ASIL A/B code coverage metrics."
+        - "Performed in-vehicle systems integration and utilized CANape (Vector) tools to analyze CAN signals and diagnose vehicle’s firmware-level failures.
+        - "Collaborated with cross-functional engineering teams to integrate software key performance metrics (KPI) to collect vehicle data upholding functional safety standards and assisting in software bug triaging."
+
+    - title: "Hardware Designer"
+      institution: UBC Formula Electric, Vancouver BC
+      year: 2022 - 2024
+      description:
+        - "Enabled firmware testing and validation of PCB boards by leveraging ChimeraTool and Python scripts."
         - "Designed and validated the Tractive System Active Light PCB board with Altium ensuring compliance with competition standards, enhancing functionality, and prioritizing driver safety."
-        - "Implemented, organized, and improved the vehicle's wiring and board connections through Altium, and within the physical vehicle to effectively enhance firmware-hardware synergy."
+        - "Propelled the development and construction of the electric vehicle, Thruna, placing 2nd in battery efficiency and 21st overall out of 69 teams in the 2023 Formula SAE Electric competition."
 
     - title: "Mechanical Engineering Intern"
       institution: Acuren, Richmond BC
       year: 2023
       description:
-        - "Performed mechanical tests including tensile and impact tests, utilizing industry-standard equipment and procedures within Acuren's accredited engineering and metallurgical laboratory to validate material quality."
+        - "Examined datasets of over 5000 points with Excel and Ansys Mechanical to produce comprehensive technical reports that summarize test results and observations, while providing recommendations to customers."
+        - "Performed mechanical tests including tensile and impact tests, utilizing industry-standard (ASTM-A370) equipment and procedures within Acuren’s accredited engineering and metallurgical laboratory."
         - "Collaborated with interdisciplinary teams to effectively oversee and implement multiple projects simultaneously, while ensuring strict adherence to project timelines and financial constraints."
-        - "Generated comprehensive technical reports summarizing test results, observations, and recommendations, bolstering the organization's knowledge base, and providing critical documentation."
 
     - title: "Content Creator"
       institution: West Richmond Community Center, Richmond BC
@@ -66,11 +75,17 @@
 - title: Technical Projects
   type: time_table
   contents:
+    - title: "PinPoint"
+      year: 2024
+      description:
+        - "Facilitated the development of PinPoint, a map-based social media platform allowing users to collaborate through a map-based user interface at nwHacks 2024 24-hour hackathon."
+        - "Leveraged a Java Spring Boot, Mongo DB, and React stack to seamlessly develop and deploy the application."
+
     - title: "Internet of Things Server"
       year: 2023
       description:
-        - "Developed a robust IoT server to provide clients with seamless access to toggle services and prediction functionalities for actuators and sensors."
-        - "Identified and resolved complex issues within the IoT server to ensure the system's stability and reliability."
+        - "Developed a robust IoT server to provide clients with access to toggle services and prediction functionalities for actuators and sensors."
+        - "Identified and resolved complex multi-threading and system integration issues to ensure server’s reliability."
 
     - title: "Audio Manipulation System"
       year: 2023
@@ -81,6 +96,9 @@
 - title: "Honors and Awards"
   type: time_table
   contents:
+    - year: 2024
+      items:
+        - "Dean's Honour List"
     - year: 2023
       items:
         - "Dean's Honour List"
@@ -104,4 +122,4 @@
 - title: "Other Interests"
   type: list
   contents:
-    - "<u>Hobbies:</u> Ice Hockey, Fitness and Conditioning, Fishing, Investing"
+    - "<u>Hobbies:</u> Ice Hockey, Fitness and Conditioning, Fishing, Cycling, Hiking"

@@ -9,8 +9,8 @@ profile:
   image: geoffrey_photo.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>11280 Frigate Court</p>
-    <p>Richmond BC, V7E 4M4</p>
+    # <p>11280 Frigate Court</p>
+    # <p>Richmond BC, V7E 4M4</p>
 
 news: true  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
