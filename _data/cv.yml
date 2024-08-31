@@ -33,7 +33,7 @@
       description:
         - "Developed customer-facing Body Control features in C ensuring adherence to system requirements, while implementing rigorous testing procedures."
         - "Deployed unit tests with GoogleTest and automated Python testing scripts for Hardware-in-the-Loop (HiL) systems to ensure comprehensive and efficient testing of vehicle software, and satisfy ASIL A/B code coverage metrics."
-        - "Performed in-vehicle systems integration and utilized CANape (Vector) tools to analyze CAN signals and diagnose vehicle’s firmware-level failures.
+        - "Performed in-vehicle systems integration and utilized CANape (Vector) tools to analyze CAN signals and diagnose vehicle’s firmware-level failures."
         - "Collaborated with cross-functional engineering teams to integrate software key performance metrics (KPI) to collect vehicle data upholding functional safety standards and assisting in software bug triaging."
 
     - title: "Hardware Designer"
