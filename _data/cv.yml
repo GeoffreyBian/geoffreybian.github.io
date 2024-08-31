@@ -3,8 +3,14 @@
   contents:
     - name: Full Name
       value: Geoffrey Bian
+    - name: Phone Number
+      value: 604-352-3756
+    - name: Email
+      value: geoffreybian100@gmail.com
     - name: Date of Birth
       value: 2 July 2004
+    - name: LinkedIn
+      value: www.linkedin.com/in/geoffreybian/
     - name: Languages
       value: English, French, Mandarin
 
@@ -15,14 +21,24 @@
       institution: University of British Columbia
       year: 2022 - 2027
       description:
-        - "Cumulative GPA of 88.3% (4.2)"
+        - "Cumulative GPA of 87.2% (4.1)"
         - title: "Next available Co-op work term"
           contents:
-            - "May-August 2024"
+            - "January-August 2025"
         - title: "Relevant Courses"
           contents:
-            - "Software Construction I"
-            - "Computing Systems I"
+            - "Software Construction"
+            - "Computing Systems"
+            - "Data Structures & Algorithms"
+            - "Circuit Analysis"
+            - "Technical Communication"
+
+- title: "Technical Skills"
+  type: list
+  contents:
+    - "<u>Programming & Frameworks:</u> Java, Python, C, C++, JavaScript, React.js, Node.js, GoogleTest, JUnit, GDB"
+    - "<u>Systems & Hardware:</u> AWS, TCP/IP, CAN, LIN, ARM, Raspberry Pi, Altium, SystemVerilog"
+    - "<u>Tools & Technologies:</u> Linux (Ubuntu), Git, Docker, CI/CD, VS Code, MATLAB, Excel, Jenkins, Agile Methodologies"
 
 - title: Experience
   type: time_table
