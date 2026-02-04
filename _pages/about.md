@@ -2,19 +2,27 @@
 layout: about
 title: about
 permalink: /
-subtitle: Computer Engineering Student at the University of British-Columbia
+subtitle: BASc Computer Engineering Student @ University of British Columbia
 
 profile:
   align: right
-  image: geoffrey_photo.jpg
+  image: geoffrey_photo_new.png
   image_circular: false # crops the image to make it circular
   more_info: >
 
-news: true  # includes a list of news items
+news: false  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
+
+I am a computer engineering student at the University of British Columbia with a focus on control systems, embedded software, and machine learning. My interests lie in building intelligent, real-time systems that interact with the physical world, particularly in domains such as robotics, vehicle firmware, energy systems, and sustainable infrastructure. I am motivated by applying rigorous engineering and data-driven methods to improve efficiency, reliability, and environmental impact.
+
+<!-- [GitHub](https://github.com/GeoffreyBian) ·
+[LinkedIn](https://www.linkedin.com/in/geoffreybian/) ·
+[Resume](https://geoffreybian.github.io/cv/) -->
+
+<!-- 
 
 I am currently a Computer Engineering student at the University of British Columbia (UBC). I am enthusiastic about the potential of computing in software development and I am determined to make a meaningful impact in the digital landscape. 
 
@@ -32,7 +40,7 @@ I invite you to explore my [resume](https://geoffreybian.github.io/cv/) and [per
 
 Thank you for visiting, and I look forward to connecting with you!
 
-Geoffrey Bian
+Geoffrey Bian -->
 
 
 <!-- 
