@@ -9,133 +9,124 @@
       value: geoffreybian100@gmail.com
     - name: LinkedIn
       value: www.linkedin.com/in/geoffreybian/
-    - name: Date of Birth
-      value: 2 July 2004
+    - name: GitHub
+      value: github.com/GeoffreyBian
+    - name: Citizenship
+      value: Canadian
     - name: Languages
       value: English, French, Mandarin
 
 - title: Education
   type: time_table
   contents:
-    - title: "Bachelor's of Applied Sciences in Computer Engineering"
+    - title: "Bachelor of Applied Science in Computer Engineering"
       institution: University of British Columbia
       year: 2022 - 2027
       description:
-        - "Cumulative GPA of 87.2% (4.1)"
-        - title: "Next available Co-op work term"
+        - "GPA: 4.0 / 4.0 (87%+)"
+        - title: "Relevant Coursework"
           contents:
-            - "January-August 2025"
-        - title: "Relevant Courses"
-          contents:
-            - "Software Construction"
-            - "Computing Systems"
-            - "Data Structures & Algorithms"
-            - "Circuit Analysis"
-            - "Technical Communication"
+            - Software Construction
+            - Computing Systems
+            - Data Structures & Algorithms
+            - Control Systems
+            - Circuit Analysis
 
-- title: "Technical Skills"
+- title: Technical Skills
   type: list
   contents:
-    - "<u>Programming & Frameworks:</u> Java, Python, C, C++, JavaScript, React.js, Node.js, GoogleTest, JUnit, GDB"
-    - "<u>Systems & Hardware:</u> AWS, TCP/IP, CAN, LIN, ARM, Raspberry Pi, Altium, SystemVerilog"
-    - "<u>Tools & Technologies:</u> Linux (Ubuntu), Git, Docker, CI/CD, VS Code, MATLAB, Excel, Jenkins, Agile Methodologies"
+    - "<u>Languages:</u> Python, C, C++, Java, JavaScript (React), Go, Rust, SQL"
+    - "<u>Systems & Embedded:</u> CAN, LIN, TCP/IP, RTOS, ARM, STM32, Arduino, Raspberry Pi"
+    - "<u>ML & Controls:</u> PyTorch, MATLAB Simulink, Kalman Filters, PID Control"
+    - "<u>Tools & Platforms:</u> Linux, Git, Docker, Bazel, Jenkins, AWS IoT, Ansys, Altium"
 
 - title: Experience
   type: time_table
   contents:
-    - title: "Software Engineer Intern"
-      institution: Rivian Automotive, Vancouver BC
-      year: 2024 - Present
+    - title: "Software Engineer Intern – Energy Engineering"
+      institution: Tesla, Palo Alto CA
+      year: Feb 2025 – Aug 2025
       description:
-        - "Developed customer-facing Body Control features in C ensuring adherence to system requirements, while implementing rigorous testing procedures."
-        - "Deployed unit tests with GoogleTest and automated Python testing scripts for Hardware-in-the-Loop (HiL) systems to ensure comprehensive and efficient testing of vehicle software, and satisfy ASIL A/B code coverage metrics."
-        - "Performed in-vehicle systems integration and utilized CANape (Vector) tools to analyze CAN signals and diagnose vehicle’s firmware-level failures."
-        - "Collaborated with cross-functional engineering teams to integrate software key performance metrics (KPI) to collect vehicle data upholding functional safety standards and assisting in software bug triaging."
+        - "Designed automation and supervisory control logic using Python, Rust, and Structured Text across 12+ Balance of Plant subsystems."
+        - "Developed predictive Battery Energy Storage System and Solar control algorithms in MATLAB Simulink, optimizing real and reactive power dispatch on 40MWh+ sites."
+        - "Built HMI dashboards in React and JavaScript visualizing 50+ real-time telemetry streams."
+        - "Received top-tier performance evaluation for technical ownership and impact."
 
-    - title: "Hardware Designer"
-      institution: UBC Formula Electric, Vancouver BC
-      year: 2022 - 2024
+    - title: "Software Engineer Intern – Body Controls (Extension)"
+      institution: Rivian & Volkswagen Group Technologies
+      year: Nov 2024 – Feb 2025
       description:
-        - "Enabled firmware testing and validation of PCB boards by leveraging ChimeraTool and Python scripts."
-        - "Designed and validated the Tractive System Active Light PCB board with Altium ensuring compliance with competition standards, enhancing functionality, and prioritizing driver safety."
-        - "Propelled the development and construction of the electric vehicle, Thruna, placing 2nd in battery efficiency and 21st overall out of 69 teams in the 2023 Formula SAE Electric competition."
+        - "Developed customer-facing Vehicle Access and Exterior Lighting features in C on an RTOS environment."
+        - "Adhered to MISRA standards and ASIL A/B/C functional safety processes."
+        - "Integrated 30+ KPIs for vehicle-user interaction analytics."
+        - "Improved build scalability using Bazel."
+
+    - title: "Software Engineer Intern – Test & Integration"
+      institution: Rivian Automotive, Vancouver BC
+      year: May 2024 – Nov 2024
+      description:
+        - "Built automated Python and GoogleTest frameworks for Hardware-in-the-Loop systems."
+        - "Achieved 100% statement and 95% branch coverage on vehicle firmware."
+        - "Performed in-vehicle integration and CAN/LIN/Ethernet debugging using Vector CANape."
 
     - title: "Mechanical Engineering Intern"
       institution: Acuren, Richmond BC
-      year: 2023
+      year: May 2023 – Aug 2023
       description:
-        - "Examined datasets of over 5000 points with Excel and Ansys Mechanical to produce comprehensive technical reports that summarize test results and observations, while providing recommendations to customers."
-        - "Performed mechanical tests including tensile and impact tests, utilizing industry-standard (ASTM-A370) equipment and procedures within Acuren’s accredited engineering and metallurgical laboratory."
-        - "Collaborated with interdisciplinary teams to effectively oversee and implement multiple projects simultaneously, while ensuring strict adherence to project timelines and financial constraints."
+        - "Analyzed 15,000+ point stress–strain datasets using Ansys and Excel."
+        - "Authored technical reports delivering actionable insights to industrial clients."
 
-    - title: "Content Creator"
-      institution: West Richmond Community Center, Richmond BC
-      year: 2021 - 2022
-      description:
-        - "Utilized photography and graphic design tools to revamp the community image of West Richmond's basketball camp, resulting in a more compelling and effective brand representation."
-        - "Leveraged various social and networking platforms to promote the camp and establish connections with patrons, expanding outreach and engagement (22% growth over summer 2021)."
-
-    - title: "Ice Hockey Referee"
-      institution: BC Hockey, Vancouver BC
-      year: 2016 - Present
-      description:
-        - "Demonstrating teamwork and flexibility through working with other officials to create a safe hockey environment for players, coaches, and parents."
-        - "Managed on-ice conflicts, while ensuring impartiality to maintain the integrity of the game and uphold sportsmanship standards."
-
-    - title: "Learn To Skate Instructor"
-      institution: Richmond Arenas Community Association, Richmond BC
-      year: 2021 - 2022
-      description:
-        - "Executed a variety of high-quality and stimulating skating activities for children ages 4-16, while fostering a safe and dynamic learning environment."
-
-- title: Technical Projects
+- title: Academic & Technical Projects
   type: time_table
   contents:
-    - title: "PinPoint"
-      year: 2024
+    - title: "Bird Species Classification with Deep Learning"
+      year: 2025 – Present
       description:
-        - "Facilitated the development of PinPoint, a map-based social media platform allowing users to collaborate through a map-based user interface at nwHacks 2024 24-hour hackathon."
-        - "Leveraged a Java Spring Boot, Mongo DB, and React stack to seamlessly develop and deploy the application."
+        - "Designed and trained image classification models using PyTorch."
+        - "Implemented both custom CNNs and ResNet-50 transfer learning pipelines."
+        - "Applied batch normalization, dropout, and validation monitoring to improve generalization."
 
-    - title: "Internet of Things Server"
-      year: 2023
+    - title: "Adaptive Kalman-Based Autonomous Navigation System"
+      year: 2025 – Present
       description:
-        - "Developed a robust IoT server to provide clients with access to toggle services and prediction functionalities for actuators and sensors."
-        - "Identified and resolved complex multi-threading and system integration issues to ensure server’s reliability."
+        - "Developed a real-time navigation stack for an autonomous F1Tenth vehicle using ROS and Python."
+        - "Implemented Kalman-filter-based sensor fusion and PID control."
+        - "Achieved 95% success rate in dynamic obstacle avoidance."
 
-    - title: "Audio Manipulation System"
-      year: 2023
+    - title: "UBC Baja SAE – Software & Hardware Lead"
+      year: 2024 – Present
       description:
-        - "Implemented Fourier Transform algorithms to analyze audio signals, enabling the conversion of audio data from the time domain to the frequency domain for advanced analysis."
-        - "Developed and optimized audio filtration algorithms, including noise reduction, pitch shifting, and equalization, enhancing audio quality."
+        - "Led a sub-team of 9 engineers in embedded systems and CAN debugging."
+        - "Designed a distributed real-time suspension control system using STM32, Arduino, and Raspberry Pi."
+        - "Implemented multi-ECU communication over CAN and SPI."
 
-- title: "Honors and Awards"
+    - title: "UBC CIRRUS Lab – Undergraduate Research Assistant"
+      year: 2025 – Present
+      description:
+        - "Developed optimization algorithms for data center workload migration achieving ~40% energy reduction."
+        - "Researched blockchain-integrated ML for verifiable cloud GHG tracking."
+
+    - title: "UBC Formula Electric SAE"
+      year: 2022 – 2024
+      description:
+        - "Designed and validated safety-critical PCB boards using Altium."
+        - "Built Python-based firmware validation tools for hardware testing."
+
+- title: Honors and Awards
   type: time_table
   contents:
     - year: 2024
       items:
-        - "Dean's Honour List"
+        - Dean’s Honour List
     - year: 2023
       items:
-        - "Dean's Honour List"
+        - Dean’s Honour List
     - year: 2022
       items:
-        - "British Columbia Retired Principals' and Vice-Principals' Association Scholarship"
-        - "Sir Winston Churchill Class of '85 Scholarship"
+        - British Columbia Retired Principals’ & Vice-Principals’ Association Scholarship
+        - Sir Winston Churchill Class of ’85 Scholarship
 
-# - title: "Academic Interests"
-#   type: nested_list
-#   contents:
-#     - title: "Topic 1."
-#       items:
-#         - "Description 1."
-#         - "Description 2."
-#     - title: "Topic 2."
-#       items:
-#         - "Description 1."
-#         - "Description 2."
-
-- title: "Other Interests"
+- title: Other Interests
   type: list
   contents:
-    - "<u>Hobbies:</u> Ice Hockey, Fitness and Conditioning, Fishing, Cycling, Hiking"
+    - "<u>Hobbies:</u> Ice Hockey, Fitness & Conditioning, Hiking, Cycling, Fishing"
