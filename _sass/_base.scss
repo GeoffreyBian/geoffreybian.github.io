@@ -578,65 +578,99 @@ footer.sticky-bottom {
 
 
 // Projects
+
 .projects {
-  /* 1. Force the grid to act as a Flexbox row instead of Masonry */
-  .grid {
-    display: flex !important;
-    flex-wrap: wrap;
-    gap: 20px;
-    /* Remove any absolute positioning Masonry might have added */
-    height: auto !important; 
+  /* Restore the hover effect */
+  a {
+    text-decoration: none;
+    &:hover {
+      .card-title {
+        color: var(--global-theme-color) !important;
+      }
+      .card {
+        border-color: var(--global-theme-color);
+        box-shadow: 0 0 10px rgba(var(--global-theme-color-rgb), 0.2);
+      }
+    }
   }
 
-  /* 2. Make every item in the grid the same width and height */
+  /* Force a 3-column structured grid */
+  .grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+    height: auto !important; /* Kills Masonry's height calculation */
+    margin-top: 2rem;
+  }
+
+  /* Make items square-ish and 3 per row */
   .grid-item {
     position: relative !important;
     top: auto !important;
     left: auto !important;
-    width: calc(33.333% - 14px) !important; /* 3 columns - adjust gap */
+    /* (100% / 3) minus the gap math */
+    width: calc(33.333% - 14px) !important; 
     display: flex;
   }
 
-  /* 3. Force the card to fill the container and align text */
   .card {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 400px; /* SET A FIXED HEIGHT HERE to make them identical */
-    padding: 1rem;
+    /* Aspect ratio ensures a square shape regardless of screen size */
+    aspect-ratio: 1 / 1; 
+    padding: 1.5rem;
+    border: 1px solid var(--global-divider-color);
+    background-color: var(--global-card-bg-color);
     
     .card-body {
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
     }
 
-    /* 4. Handle long titles so they don't break the layout */
     .card-title {
-      height: 3.6em; /* Space for exactly 2-3 lines */
-      overflow: hidden;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      /* Prevent long titles from pushing the box down */
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    /* 5. Handle long descriptions */
     .card-text {
-      overflow: hidden;
+      font-size: 0.95rem;
+      /* Prevent long descriptions from pushing the box down */
       display: -webkit-box;
-      -webkit-line-clamp: 4; /* Limits description to 4 lines */
+      -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
+      overflow: hidden;
     }
+  }
+
+  h2.category {
+    color: var(--global-divider-color);
+    border-bottom: 1px solid var(--global-divider-color);
+    padding-top: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: right;
   }
 }
 
-/* Mobile Responsiveness: 1 column on small screens */
+/* Ensure 1 column on mobile so it doesn't look cramped */
 @media (max-width: 768px) {
   .projects .grid-item {
     width: 100% !important;
   }
+  .projects .card {
+    aspect-ratio: auto;
+    min-height: 250px;
+  }
 }
-
 // Publications
 
 .publications {
