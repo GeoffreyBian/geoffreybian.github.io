@@ -21,7 +21,7 @@ Standard autonomous racing focuses on static wall-following or gap-finding. This
 The "secret sauce" of this project is the **4-State Constant Velocity Kalman Filter**. Because camera-based object detection is inherently noisy and the depth data from a moving car can be sparse, we implemented a filter to maintain a stable estimate of the object's position and velocity.
 
 #### 1. State Estimation with Kalman Filtering
-The filter maintains a state vector $\mathbf{x}_k$:
+The filter maintains a state vector:
 $$\mathbf{x}_k = \begin{bmatrix} p_x \\ p_y \\ v_x \\ v_y \end{bmatrix}$$
 
 * **Prediction Step:** We project the ball’s position using the time delta ($\Delta t$) and the constant velocity assumption.
