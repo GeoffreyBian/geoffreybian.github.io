@@ -79,20 +79,6 @@
 - title: Academic & Technical Projects
   type: time_table
   contents:
-    - title: "Bird Species Classification with Deep Learning"
-      year: 2025 – Present
-      description:
-        - "Designed and trained image classification models using PyTorch."
-        - "Implemented both custom CNNs and ResNet-50 transfer learning pipelines."
-        - "Applied batch normalization, dropout, and validation monitoring to improve generalization."
-
-    - title: "Adaptive Kalman-Based Autonomous Navigation System"
-      year: 2025 – Present
-      description:
-        - "Developed a real-time navigation stack for an autonomous F1Tenth vehicle using ROS and Python."
-        - "Implemented Kalman-filter-based sensor fusion and PID control."
-        - "Achieved 95% success rate in dynamic obstacle avoidance."
-
     - title: "UBC Baja SAE – Software & Hardware Lead"
       year: 2024 – Present
       description:
@@ -100,7 +86,7 @@
         - "Designed a distributed real-time suspension control system using STM32, Arduino, and Raspberry Pi."
         - "Implemented multi-ECU communication over CAN and SPI."
 
-    - title: "UBC CIRRUS Lab – Undergraduate Research Assistant"
+    - title: "UBC Cloud Infrastructure Lab (CIRRUS) – Undergraduate Research Assistant"
       year: 2025 – Present
       description:
         - "Developed optimization algorithms for data center workload migration achieving ~40% energy reduction."
