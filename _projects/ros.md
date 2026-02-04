@@ -2,7 +2,7 @@
 layout: page 
 title: F1TENTH Dynamic Object Avoidance
 description: A predictive ROS2 system using an Extended Kalman Filter and RGB-D sensor fusion to avoid high-speed dynamic obstacles.
-img: assets/img/doa_thumbnail.jpg
+# img: assets/img/doa_thumbnail.jpg
 importance: 1
 category: Projects
 ---
@@ -53,8 +53,5 @@ The system uses a modular ROS2 architecture consisting of five primary nodes:
 ---
 
 ### Project Links
-* **GitHub Repository:** [Project_GA5 - Dynamic Object Avoidance](https://github.com/CPEN-391-25W1/Project_GA5)
-* **Documentation:** [CONTRIBS.md](https://github.com/CPEN-391-25W1/Project_GA5/blob/main/CONTRIBS.md)
-
-[View the DOA System on GitHub](https://github.com/CPEN-391-25W1/Project_GA5)
+* **GitHub Repository:** [Project_GA5 - Dynamic Object Avoidance](https://github.com/GeoffreyBian/DOA)
 * **Full Report (PDF):** [DOA (Dynamic Object Avoidance)](/assets/pdf/DOA.pdf)
