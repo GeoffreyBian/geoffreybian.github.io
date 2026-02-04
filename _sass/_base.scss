@@ -578,67 +578,62 @@ footer.sticky-bottom {
 
 
 // Projects
-
 .projects {
-  a {
-    text-decoration: none;
-
-    &:hover {
-      .card-title {
-        color: var(--global-theme-color);
-      }
-    }
-  }
-
-  /* 1. Force the grid to act as a Flex container */
+  /* 1. Force the grid to act as a Flexbox row instead of Masonry */
   .grid {
-    display: flex;
+    display: flex !important;
     flex-wrap: wrap;
-    gap: 10px; // Adjust spacing between cards
+    gap: 20px;
+    /* Remove any absolute positioning Masonry might have added */
+    height: auto !important; 
   }
 
-  /* 2. Make the grid-item fill height */
+  /* 2. Make every item in the grid the same width and height */
   .grid-item {
-    width: 250px;
-    margin-bottom: 10px;
-    display: flex; // Allows the internal card to stretch
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: calc(33.333% - 14px) !important; /* 3 columns - adjust gap */
+    display: flex;
   }
 
-  /* 3. Force the card to fill the container and manage layout */
+  /* 3. Force the card to fill the container and align text */
   .card {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 100%;
-
-    img {
-      width: 100%;
-      height: 180px;      /* Set a fixed height for images */
-      object-fit: cover;  /* Crop images to fill the box without stretching */
-    }
-
+    height: 400px; /* SET A FIXED HEIGHT HERE to make them identical */
+    padding: 1rem;
+    
     .card-body {
-      flex: 1 1 auto;     /* This pushes the card footer/links to the bottom */
+      flex: 1 1 auto;
       display: flex;
       flex-direction: column;
     }
 
-    .card-text {
-      /* Optional: Truncate description to 3 lines to keep text uniform */
+    /* 4. Handle long titles so they don't break the layout */
+    .card-title {
+      height: 3.6em; /* Space for exactly 2-3 lines */
+      overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
+    }
+
+    /* 5. Handle long descriptions */
+    .card-text {
       overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* Limits description to 4 lines */
+      -webkit-box-orient: vertical;
     }
   }
+}
 
-  h2.category {
-    color: var(--global-divider-color);
-    border-bottom: 1px solid var(--global-divider-color);
-    padding-top: 0.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    text-align: right;
+/* Mobile Responsiveness: 1 column on small screens */
+@media (max-width: 768px) {
+  .projects .grid-item {
+    width: 100% !important;
   }
 }
 
