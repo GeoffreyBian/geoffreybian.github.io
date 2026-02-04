@@ -2,7 +2,11 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Some of my software projects as of December 2023.
+description: >
+  A collection of systems-level projects exploring embedded software, controls,
+  distributed systems, and applied machine learning. These projects reflect my
+  interest in building reliable software that interfaces with real hardware,
+  physical processes, and large-scale infrastructure.
 nav: true
 nav_order: 2
 display_categories: [work, fun]
