@@ -45,7 +45,7 @@
   contents:
     - title: "Software Engineer Intern – Energy Engineering"
       institution: Tesla, Palo Alto CA
-      year: 2025.02 – 2025.08
+      year: 2025
       description:
         - "Designed automation and supervisory control logic using Python, Rust, and Structured Text across 12+ Balance of Plant subsystems."
         - "Developed predictive Battery Energy Storage System and Solar control algorithms in MATLAB Simulink, optimizing real and reactive power dispatch on 40MWh+ sites."
@@ -54,7 +54,7 @@
 
     - title: "Software Engineer Intern – Body Controls (Extension)"
       institution: Rivian & Volkswagen Group Technologies
-      year: 2024.11 – 2025.02
+      year: 2024 – 2025
       description:
         - "Developed customer-facing Vehicle Access and Exterior Lighting features in C on an RTOS environment."
         - "Adhered to MISRA standards and ASIL A/B/C functional safety processes."
@@ -63,7 +63,7 @@
 
     - title: "Software Engineer Intern – Test & Integration"
       institution: Rivian Automotive, Vancouver BC
-      year: 2024.05 – 2024.11
+      year: 2024
       description:
         - "Built automated Python and GoogleTest frameworks for Hardware-in-the-Loop systems."
         - "Achieved 100% statement and 95% branch coverage on vehicle firmware."
@@ -71,7 +71,7 @@
 
     - title: "Mechanical Engineering Intern"
       institution: Acuren, Richmond BC
-      year: 2023.05 – 2023.08
+      year: 2023
       description:
         - "Analyzed 15,000+ point stress–strain datasets using Ansys and Excel."
         - "Authored technical reports delivering actionable insights to industrial clients."

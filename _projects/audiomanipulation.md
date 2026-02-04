@@ -2,9 +2,9 @@
 layout: page
 title: Audio Manipulation System
 description: Application to enhance audio clips through signal processing techniques
-img: assets/img/audio1.jpg
+# img: assets/img/audio1.jpg
 importance: 4
-category: work
+category: Projects
 ---
 `October 2023`
 

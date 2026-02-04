@@ -9,7 +9,7 @@ description: >
   physical processes, and large-scale infrastructure.
 nav: true
 nav_order: 2
-display_categories: [work, fun]
+display_categories: [Research, Projects]
 horizontal: false
 ---
 

@@ -2,9 +2,9 @@
 layout: page
 title: Boggle Board Game
 description: Word search game on interactive interface 
-img: assets/img/boggle2.png
+# img: assets/img/boggle2.png
 importance: 2
-category: work
+category: Projects
 ---
 `November 2023`
 

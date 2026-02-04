@@ -2,9 +2,9 @@
 layout: page
 title: To-do List
 description: Application to track events, reminders, and goals
-img: assets/img/todo5.png
+# img: assets/img/todo5.png
 importance: 5
-category: work
+category: Projects
 related_publications: 
 ---
 `March 2020 - June 2020`

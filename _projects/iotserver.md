@@ -2,9 +2,9 @@
 layout: page
 title: IoT Server
 description: Internet of Things server to provide actuator and sensor functionalities to clients
-img: assets/img/iot.jpg
+# img: assets/img/iot.jpg
 importance: 1
-category: work
+category: Projects
 giscus_comments: false
 ---
 `November 2023 - December 2023`
