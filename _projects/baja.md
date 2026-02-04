@@ -7,7 +7,7 @@ importance: 7
 category: Projects
 ---
 
-`September 2024 – February 2025`
+`September 2024 – Present`
 
 For the UBC Baja SAE team, I developed the vehicle’s distributed CAN bus network, connecting five STM32-based ECUs—four controlling the independent suspension modules and one managing the rear PCB—to a centralized dashboard running on a Raspberry Pi using Gradle. The system enables real-time communication of vehicle telemetry, sensor data, and actuator states to a unified dashboard, allowing the driver and team to monitor performance and diagnose issues during testing and competition.
 
@@ -37,7 +37,7 @@ The project combined embedded firmware development, real-time systems design, an
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/baja_car.jpg" title="Baja Vehicle Mochi" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/baja_car.png" title="Baja Vehicle Mochi" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
