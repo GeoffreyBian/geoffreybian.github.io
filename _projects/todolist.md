@@ -1,9 +1,9 @@
 ---
 layout: page
-title: To-do List
-description: Application to track events, reminders, and goals
+title: To-do List application
+description: Application to track and notify about events, reminders, and goals built while I was in high school!
 # img: assets/img/todo5.png
-importance: 5
+importance: 9
 category: Projects
 related_publications: 
 ---

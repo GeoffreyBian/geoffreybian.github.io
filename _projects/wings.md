@@ -1,9 +1,9 @@
 ---
 layout: page 
-title: wings
+title: wings bird classifier
 description: Image classification pipeline utilizing custom CNNs and transfer learning (ResNet-50) to identify bird species.
 # img: assets/img/baja_can_dashboard.jpg
-importance: 9
+importance: 2
 category: Projects
 ---
 

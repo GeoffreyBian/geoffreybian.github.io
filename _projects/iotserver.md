@@ -1,9 +1,9 @@
 ---
 layout: page
-title: IoT Server
-description: Internet of Things server to provide actuator and sensor functionalities to clients
+title: Internet of Things
+description: Internet of Things (IoT) server designed to expose actuator control and real-time sensor data interfaces to connected clients.
 # img: assets/img/iot.jpg
-importance: 1
+importance: 5
 category: Projects
 giscus_comments: false
 ---

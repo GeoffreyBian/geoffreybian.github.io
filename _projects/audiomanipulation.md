@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Audio Manipulation System
-description: Application to enhance audio clips through signal processing techniques
+title: Audio Manipulation
+description: Application to enhance audio clips through signal processing techniques including the discrete fourier transform
 # img: assets/img/audio1.jpg
-importance: 4
+importance: 8
 category: Projects
 ---
 `October 2023`

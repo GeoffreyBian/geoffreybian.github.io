@@ -18,7 +18,7 @@ As data center electricity demand surges due to AI and cloud computing, managing
 
 
 ### Technical Insights: Linear Programming & Optimization
-I developed a linear programming (LP) formulation in **Python** using the **PuLP** library to solve for the optimal energy capacity ($E_{cap}$) and hourly dispatch schedule. Unlike static models, this framework treats battery degradation as a throughput-based cost, effectively converting capital expenditure (CAPEX) into a usage-dependent operating expense (OPEX).
+I developed a linear programming (LP) formulation in **Python** using the **PuLP** library to solve for the optimal energy capacity (E_cap) and hourly dispatch schedule. Unlike static models, this framework treats battery degradation as a throughput-based cost, effectively converting capital expenditure (CAPEX) into a usage-dependent operating expense (OPEX).
 
 * **Objective Function**: Minimizes the sum of grid electricity costs, cycling degradation costs, and amortized capacity costs.
 * **Constraints**: Enforces energy balance (state-of-charge), power balance (grid vs. load), and C-rate limits to ensure the simulation remains physically realistic.

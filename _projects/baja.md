@@ -1,9 +1,9 @@
 ---
 layout: page 
-title: UBC Baja Vehicle CAN Bus Network
+title: UBC Baja Mechatronics
 description: Network of 5 STM32 ECUs communicating suspension and rear vehicle data to a Raspberry Pi dashboard.
 # img: assets/img/baja_can_dashboard.jpg
-importance: 7
+importance: 1
 category: Projects
 ---
 

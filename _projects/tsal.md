@@ -1,9 +1,9 @@
 ---
 layout: page 
-title: Tractive System Active Light (TSAL) 
-description: Safety-critical PCB designed for the Quadruna electric race car to monitor voltage differentials. 
+title: Tractive System Light
+description: Safety-critical PCB designed for the UBC Formula Electric Quadruna electric race car to monitor voltage differentials. 
 # img: assets/img/tsal_project.jpg 
-importance: 6
+importance: 4
 category: Projects
 
 ---

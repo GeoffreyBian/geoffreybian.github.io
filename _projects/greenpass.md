@@ -1,6 +1,6 @@
 ---
 layout: page
-title: GreenPASS
+title: GreenPASS optimization
 description: Collaborative workload shifting framework designed to reduce data center carbon emissions without increasing user costs.
 # img: assets/img/baja_can_dashboard.jpg
 importance: 1
@@ -9,8 +9,7 @@ category: Research
 
 `September 2025 – Present`
 
-**Research Lead:** Geoffrey Bian
-**Collaborators:** Zihan Pan (PhD Candidate), Mohammad Shahrad (Assistant Professor)
+**Collaborators:** Zihan Pan (PhD Candidate), Mohammad Shahrad (Assistant Professor), Geoffrey Bian (UREP Representative)
 **Affiliation:** [UBC Cloud Infrastructure Lab (CIRRUS)](https://cirrus.ece.ubc.ca/), University of British Columbia
 
 ### Project Overview

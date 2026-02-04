@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Sea Levels Analysis
-description: Analyzing different terrains to collect data on effect of rising sea levels
+description: Analyzing different terrains to collect data on effect of rising sea levels in a simulated environment. 
 # img: assets/img/sealevels2.png
-importance: 3
+importance: 6
 category: Projects
 ---
 `November 2023`
