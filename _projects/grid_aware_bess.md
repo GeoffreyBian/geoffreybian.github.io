@@ -9,8 +9,8 @@ category: Research
 
 `September 2025 – December 2025`
 
-**Research Lead:** Geoffrey Bian
-**Affiliation:** [UBC Cloud Infrastructure Lab (CIRRUS)](https://cirrus.ece.ubc.ca/) (Cloud Infrastructure Research for Reliability, Usability, and Sustainability)
+Geoffrey Bian, UREP Affiliate, with Zihan Pan (PhD Candidate), and Mohammad Shahrad (Assistant Professor)
+**Affiliation:** [UBC Cloud Infrastructure Lab (CIRRUS)](https://cirrus.ece.ubc.ca/), University of British Columbia
 
 ### Project Overview
 As data center electricity demand surges due to AI and cloud computing, managing grid constraints and volatile wholesale prices has become critical. **Grid Aware Cloud** investigates the physical side of energy management using Battery Energy Storage Systems (BESS) as a co-located buffer for data center loads. This project specifically models the sizing and daily operation of BESS to minimize the total cost of ownership by balancing energy procurement with battery health.
