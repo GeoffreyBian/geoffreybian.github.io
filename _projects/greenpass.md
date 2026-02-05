@@ -9,7 +9,7 @@ category: Research
 
 `September 2025 – Present`
 
-**Collaborators:** Zihan Pan (PhD Candidate), Mohammad Shahrad (Assistant Professor), Geoffrey Bian (UREP Representative)
+**Collaborators:** Zihan Pan (PhD Candidate), Mohammad Shahrad (Assistant Professor), Geoffrey Bian (UREP Affiliate)
 **Affiliation:** [UBC Cloud Infrastructure Lab (CIRRUS)](https://cirrus.ece.ubc.ca/), University of British Columbia
 
 ### Research Summary
