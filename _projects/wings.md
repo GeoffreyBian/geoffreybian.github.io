@@ -22,6 +22,8 @@ Designed and implemented an end-to-end image classification pipeline using PyTor
 ### Results
 The study achieved faster convergence and improved accuracy using pretrained models compared to the custom architecture on limited datasets. This project highlights a scalable system design that allows for extension to new datasets or deeper network architectures.
 
+[View the code on GitHub](https://github.com/GeoffreyBian/wings)
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/bird.jpg" title="Eurasian Magpie inputted into the Machine Learning Model" class="img-fluid rounded z-depth-1" %}
@@ -39,6 +41,3 @@ The study achieved faster convergence and improved accuracy using pretrained mod
 <div class="caption">
     Prediction from the Wings Neural Network
 </div>
-
-
-[View the code on GitHub](https://github.com/GeoffreyBian/wings)

@@ -17,6 +17,8 @@ A key technical challenge was ensuring deterministic behavior under the high-spe
 
 The project combined embedded firmware development, real-time systems design, and software engineering for the dashboard application. The resulting network provides a scalable architecture for integrating future subsystems and improving the vehicle’s telemetry capabilities.
 
+[View the firmware on GitHub](https://github.com/UBC-Baja-SAE/firmware)
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/baja_ecu.png" title="STM32 ECU module for suspension control" class="img-fluid rounded z-depth-1" %}
@@ -44,4 +46,3 @@ The project combined embedded firmware development, real-time systems design, an
     Baja Vehicle Mochi
 </div>
 
-[View the firmware on GitHub](https://github.com/UBC-Baja-SAE/firmware)

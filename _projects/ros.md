@@ -38,6 +38,10 @@ The system uses a modular ROS2 architecture consisting of five primary nodes:
 * **Trajectory Prediction:** EKF-based state estimation.
 * **Maneuver Node:** Dynamic speed adjustment and steering using a PD controller ($$Kp = 0.33, Kd = 0.1$$).
 
+### Project Links
+* **GitHub Repository:** [Project_GA5 - Dynamic Object Avoidance](https://github.com/GeoffreyBian/DOA)
+* **Full Report (PDF):** [DOA (Dynamic Object Avoidance)](/assets/pdf/DOA.pdf)
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/object_detection.png" title="HSV Masking for Tennis Ball Detection" class="img-fluid rounded z-depth-1" %}
@@ -49,9 +53,13 @@ The system uses a modular ROS2 architecture consisting of five primary nodes:
 <div class="caption">
     3D Position Projection in Action and State Machine
 </div>
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/tennis.png" title="F1Tenth Car with Tennis Ball" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    F1Tenth Car Aura Farming
+</div>
 
 ---
-
-### Project Links
-* **GitHub Repository:** [Project_GA5 - Dynamic Object Avoidance](https://github.com/GeoffreyBian/DOA)
-* **Full Report (PDF):** [DOA (Dynamic Object Avoidance)](/assets/pdf/DOA.pdf)
