@@ -24,7 +24,7 @@ The "secret sauce" of this project is the **4-State Constant Velocity Kalman Fil
 The filter maintains a state vector:
 $$\mathbf{x}_k = \begin{bmatrix} p_x \\ p_y \\ v_x \\ v_y \end{bmatrix}$$
 
-* **Prediction Step:** We project the ball’s position using the time delta ($\Delta t$) and the constant velocity assumption.
+* **Prediction Step:** We project the ball’s position using the time delta ($$\Delta t$$) and the constant velocity assumption.
 * **Correction Step:** We fuse raw measurements from the HSV vision pipeline. This allows the car to "remember" where the ball is and where it's going, even if the camera drops a frame.
 
 #### 2. Predictive Masking
@@ -34,9 +34,9 @@ Once we have a filtered velocity, the system calculates a **Time-to-Collision (T
 
 ### Vision & Control Strategy
 The system uses a modular ROS2 architecture consisting of five primary nodes:
-* **Object Detection:** HSV segmentation + Pinhole Projection ($Z_{\text{cam}} \frac{u - C_X}{F_X}$).
+* **Object Detection:** HSV segmentation + Pinhole Projection ($$Z_{\text{cam}} \frac{u - C_X}{F_X}$$).
 * **Trajectory Prediction:** EKF-based state estimation.
-* **Maneuver Node:** Dynamic speed adjustment and steering using a PD controller ($Kp = 0.33, Kd = 0.1$).
+* **Maneuver Node:** Dynamic speed adjustment and steering using a PD controller ($$Kp = 0.33, Kd = 0.1$$).
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
