@@ -6,7 +6,7 @@ subtitle: BASc Computer Engineering Student @ University of British Columbia
 
 profile:
   align: right
-  image: geoffrey_photo_new.png
+  image: IMG_2325.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
 
