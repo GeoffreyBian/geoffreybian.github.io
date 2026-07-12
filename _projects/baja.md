@@ -19,6 +19,9 @@ The project combined embedded firmware development, real-time systems design, an
 
 [View the firmware on GitHub](https://github.com/UBC-Baja-SAE/firmware)
 
+### Competing at Baja SAE Oregon 2026
+The team took Mochi to [Baja SAE Oregon](https://www.bajasae.net/) (May 2026, Washougal, WA) to close out the season. A few laps into the endurance event, the car suffered a lower control arm and tie rod failure, and the team returned to the pits for repairs multiple times before discovering broken welds on the frame — ultimately ending the endurance run early. The telemetry and CAN network held up throughout, giving the team clear diagnostic data at every pit stop.
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/baja_ecu.png" title="STM32 ECU module for suspension control" class="img-fluid rounded z-depth-1" %}

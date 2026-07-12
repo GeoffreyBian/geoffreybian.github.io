@@ -23,4 +23,4 @@ Key findings from our research include:
 
 
 ### Publication Status
-The paper detailing this framework and its evaluation is currently **pending approval** for the *17th ACM International Conference on Future and Sustainable Energy Systems ([ACM e-Energy 2026](https://energy.acm.org/conferences/eenergy/2026/))*.
+Our paper, [GreenPASS: Zero-Cost Carbon Reduction in the Cloud Through Provider-Assisted Spatial Shifting](https://dl.acm.org/doi/10.1145/3744255.3811732), was accepted and presented at the *17th ACM International Conference on Future and Sustainable Energy Systems ([ACM e-Energy 2026](https://energy.acm.org/conferences/eenergy/2026/))* in Banff, Canada (June 2026), as part of the inaugural ACM Sustainability Week.

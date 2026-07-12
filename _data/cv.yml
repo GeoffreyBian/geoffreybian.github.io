@@ -38,13 +38,20 @@
     - "<u>Languages:</u> Python, C, C++, Java, JavaScript (React), Go, Rust, SQL"
     - "<u>Systems & Embedded:</u> CAN, LIN, TCP/IP, RTOS, ARM, STM32, Arduino, Raspberry Pi"
     - "<u>ML & Controls:</u> PyTorch, MATLAB Simulink, Kalman Filters, PID Control"
-    - "<u>Tools & Platforms:</u> Linux, Git, Docker, Bazel, Jenkins, AWS IoT, Ansys, Altium"
+    - "<u>Tools & Platforms:</u> Linux, Git, Docker, Bazel, Jenkins, AWS EC2, AWS IoT, Ansys, Altium, Claude Code"
 
 - title: Experience
   type: time_table
   contents:
-    - title: "Software Engineer Intern – Energy Engineering"
+    - title: "Software Engineer Intern – Crash Safety"
       institution: Tesla, Palo Alto CA
+      year: 2026 – Present
+      description:
+        - "Building Hardware-in-the-Loop (HIL) test infrastructure to enable automated validation across the Restraint Control Module driver stacks, peripheral interfaces, and vehicle communication pathways."
+        - "Leveraging AI-assisted engineering workflows by developing custom Claude skills and autonomous testing agents to accelerate test generation, failure triage, and validation coverage across embedded safety systems."
+
+    - title: "Software Engineer Intern – SCADA"
+      institution: Tesla Energy, Palo Alto CA
       year: 2025
       description:
         - "Designed automation and supervisory control logic using Python, Rust, and Structured Text across 12+ Balance of Plant subsystems."
@@ -79,18 +86,18 @@
 - title: Academic & Technical Projects
   type: time_table
   contents:
-    - title: "UBC Baja SAE – Software & Hardware Lead"
+    - title: "UBC Baja SAE – Software Lead"
       year: 2024 – Present
       description:
-        - "Led a sub-team of 9 engineers in embedded systems and CAN debugging."
-        - "Designed a distributed real-time suspension control system using STM32, Arduino, and Raspberry Pi."
-        - "Implemented multi-ECU communication over CAN and SPI."
+        - "Leading a sub-team of 9 engineers in embedded systems, CAN debugging, and mechatronic systems integration."
+        - "Built a mechatronics system for IMU, tachometer, speedometer, and suspension sensing and control across STM32 and Raspberry Pi ECUs communicating over CAN, SPI, and I2C."
+        - "Competed at <a href=\"https://www.bajasae.net/\">Baja SAE Oregon</a> 2026 in Washougal, WA — worked through in-competition mechanical failures (control arm, tie rod, frame welds) to keep the car, Mochi, running through endurance."
 
     - title: "UBC Cloud Infrastructure Lab (CIRRUS) – Undergraduate Research Assistant"
       year: 2025 – Present
       description:
-        - "Developed optimization algorithms for data center workload migration achieving ~40% energy reduction."
-        - "Researched blockchain-integrated ML for verifiable cloud GHG tracking."
+        - "Co-authored <a href=\"https://dl.acm.org/doi/10.1145/3744255.3811732\">GreenPASS</a>, presented at <a href=\"https://energy.acm.org/conferences/eenergy/2026/\">ACM e-Energy 2026</a> (Banff, Canada) — a region-aware optimization for cloud workload shifting that minimizes cost and carbon emissions."
+        - "Designed analytical models for power, carbon intensity, and shifting overhead (network + storage), integrating forecasting methods (LightGBM, SES) for robust scheduling under uncertain grid conditions."
 
     - title: "UBC Formula Electric SAE"
       year: 2022 – 2024
