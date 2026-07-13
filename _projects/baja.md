@@ -1,7 +1,7 @@
 ---
 layout: page 
 title: UBC Baja Mechatronics
-description: Network of 5 STM32 ECUs communicating suspension and rear vehicle data to a Raspberry Pi dashboard.
+description: Distributed 7-node CAN network (suspension, rear PCB, and steering wheel ECUs) reporting to a Raspberry Pi dashboard.
 # img: assets/img/baja_can_dashboard.jpg
 importance: 1
 category: Projects
@@ -9,7 +9,7 @@ category: Projects
 
 `September 2024 – Present`
 
-For the UBC Baja SAE team, I developed the vehicle’s distributed CAN bus network, connecting five STM32-based ECUs—four controlling the independent suspension modules and one managing the rear PCB—to a centralized dashboard running on a Raspberry Pi using Gradle. The system enables real-time communication of vehicle telemetry, sensor data, and actuator states to a unified dashboard, allowing the driver and team to monitor performance and diagnose issues during testing and competition.
+For the UBC Baja SAE team, I developed the vehicle’s distributed CAN bus network, connecting seven nodes—four STM32-based ECUs controlling the independent suspension modules, one STM32 ECU managing the rear PCB, one ECU on the steering wheel handling driver button-press commands, and a centralized dashboard running on a Raspberry Pi—using Gradle. The system enables real-time communication of vehicle telemetry, sensor data, and actuator states to a unified dashboard, allowing the driver and team to monitor performance and diagnose issues during testing and competition.
 
 The project involved designing a robust communication protocol over CAN to handle high-frequency updates from multiple ECUs without message collisions or data loss. Each STM32 ECU was responsible for reading sensors, performing local control calculations, and broadcasting status messages over the bus. The dashboard software aggregated messages from all ECUs, processed telemetry, and displayed key vehicle parameters such as suspension position, shock velocity, and rear powertrain metrics.
 
