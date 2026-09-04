@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: BASc Computer Engineering Student @ University of British Columbia
+subtitle: Computer Engineering @ UBC · Teaching Assistant, CPEN 221 Software Construction
 
 profile:
   align: right
@@ -16,7 +16,15 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a computer engineering student at the University of British Columbia with a focus on control systems, embedded software, and machine learning. My interests lie in building intelligent, real-time systems that interact with the physical world, particularly in domains such as robotics, vehicle firmware, energy systems, and sustainable infrastructure. I am motivated by applying rigorous engineering and data-driven methods to improve efficiency, reliability, and environmental impact.
+I am a final-year computer engineering student at the University of British
+Columbia, working on firmware and embedded software. Most of what I build sits
+where software meets real hardware: vehicle safety systems, distributed energy
+infrastructure, and control loops that have to hold their timing.
+
+This year I am also a teaching assistant for CPEN 221, Software Construction,
+across both sections.
+
+I am looking for new-grad firmware and embedded software roles starting in 2027.
 
 ### Research Interests
 - **Energy & Sustainability**: Applying computing solutions to optimize energy systems and reduce environmental impact.

@@ -1067,3 +1067,21 @@ nav[data-toggle="toc"] {
 #toc-sidebar {
   z-index: 1;
 }
+
+
+// A quiet way in to /dashboards. Deliberately reads as punctuation in the
+// footer rather than a nav item; the page itself is noindex and unlisted.
+.dashboards-dot {
+  color: var(--global-text-color-light);
+  opacity: 0.45;
+  text-decoration: none;
+  padding: 0 0.15rem;
+  transition: opacity 0.15s ease-in-out, color 0.15s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    color: var(--global-theme-color);
+    text-decoration: none;
+  }
+}
