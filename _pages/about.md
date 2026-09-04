@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Computer Engineering @ UBC · Teaching Assistant, CPEN 221 Software Construction
+subtitle: BASc Computer Engineering Student @ University of British Columbia
 
 profile:
   align: right
@@ -20,9 +20,6 @@ I am a final-year computer engineering student at the University of British
 Columbia, working on firmware and embedded software. Most of what I build sits
 where software meets real hardware: vehicle safety systems, distributed energy
 infrastructure, and control loops that have to hold their timing.
-
-This year I am also a teaching assistant for CPEN 221, Software Construction,
-across both sections.
 
 I am looking for new-grad firmware and embedded software roles starting in 2027.
 
