@@ -448,11 +448,21 @@ function renderDashboard(data) {
 
   // ---------- Hero + tiles ----------
   const gainUp = (S.total_gain ?? 0) >= 0;
+  // Lead with the live total when the snapshot carries one; fall back to the
+  // weekly close otherwise. The equity curve stays weekly, so the headline and
+  // the chart's last point can differ by a few days of market moves - the "as
+  // of" line names both dates so that gap is explained, not hidden.
+  const heroValue = S.live_value != null ? S.live_value : S.total_value;
+  const heroDate = S.live_value != null ? S.live_as_of : S.as_of;
+  const heroLabel = S.live_value != null ? 'Total portfolio value · live' : 'Total portfolio value';
+  const weeklyNote = (S.live_value != null && S.total_value != null)
+    ? ` · weekly close ${money(S.total_value)} on ${S.as_of ? fullDate(S.as_of) : '—'}`
+    : '';
   document.getElementById('hero').innerHTML = `
-    <div class="label">Total portfolio value</div>
-    <div class="figure">${money(S.total_value)}</div>
+    <div class="label">${heroLabel}</div>
+    <div class="figure">${money(heroValue)}</div>
     <div class="delta ${gainUp ? 'up' : 'down'}">${gainUp ? '▲' : '▼'} ${money(S.total_gain)} (${pct(S.total_gain_pct)}) on ${money(S.net_deposits)} invested</div>
-    <div class="asof">As of ${S.as_of ? fullDate(S.as_of) : '—'} · investing since ${S.first_invested ? fullDate(S.first_invested) : '—'}</div>`;
+    <div class="asof">As of ${heroDate ? fullDate(heroDate) : '—'}${weeklyNote} · investing since ${S.first_invested ? fullDate(S.first_invested) : '—'}</div>`;
 
   const wr = data.win_rate || {};
   const twrSeries = (data.twr?.series) || [];
