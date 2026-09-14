@@ -130,6 +130,9 @@ h1{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0 0 3px}
 .ev.short{padding-top:1px}
 .ev.short .t{display:inline;margin-right:4px}
 .ev.short .n{display:inline}
+.ev .bdg{display:inline-block;font-family:var(--mono);font-size:8px;font-weight:700;
+  letter-spacing:.09em;padding:1px 4px;border-radius:3px;margin-right:4px;
+  background:var(--deadline);color:var(--surface);vertical-align:1px}
 
 .chip{border-left:3px solid var(--deadline);background:var(--deadline-bg);border-radius:3px;
   padding:2px 5px;font-size:10px;line-height:1.3;font-weight:600;color:var(--deadline);
@@ -427,7 +430,7 @@ function weekHTML(w, today){
       return `<div class="ev ${esc(it.kind)}${bad}${short}${drag}${moved}"${attrs}
         style="top:${top}px;height:${h}px;left:calc(${left}% + 1px);width:calc(${width}% - 3px)"
         title="${esc(it.start)}–${esc(it.end)}  ${esc(it.title)}${it.note?"\n"+esc(it.note):""}${tip}">
-        <span class="t">${esc(it.start)}</span><span class="n">${esc(it.title)}</span></div>`;
+        <span class="t">${esc(it.start)}</span><span class="n">${it.badge?`<span class="bdg">${esc(it.badge)}</span>`:""}${esc(it.title)}</span></div>`;
     }).join("");
     const now = day.today ? nowLine() : "";
     const weekend = (i===5||i===6) ? " is-weekend" : "";
