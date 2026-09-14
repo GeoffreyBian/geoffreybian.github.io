@@ -24,6 +24,7 @@ sitemap: false
   --money:#1B6844; --money-bg:#E4F2EA;
   --body:#A2661C;  --body-bg:#FAF0E1;
   --study:#0B5CAB; --study-bg:#E7F0FA;
+  --plan:#AD2E76;  --plan-bg:#FAE6F0;
   --shadow:0 1px 2px rgba(12,24,38,.06),0 6px 20px -12px rgba(12,24,38,.18);
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -36,6 +37,7 @@ sitemap: false
   --money:#79CFA4; --money-bg:#122A1F;
   --body:#DFA660;  --body-bg:#2E2213;
   --study:#7FB2EE; --study-bg:#152539;
+  --plan:#E88BBE;  --plan-bg:#2E1322;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
 }}
 :root[data-theme="dark"]{
@@ -45,6 +47,7 @@ sitemap: false
   --money:#79CFA4; --money-bg:#122A1F;
   --body:#DFA660;  --body-bg:#2E2213;
   --study:#7FB2EE; --study-bg:#152539;
+  --plan:#E88BBE;  --plan-bg:#2E1322;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
 }
 *{box-sizing:border-box}
@@ -62,6 +65,7 @@ h1{font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:-.02em
 .card.money{--tint:var(--money);--tint-bg:var(--money-bg)}
 .card.body{--tint:var(--body);--tint-bg:var(--body-bg)}
 .card.study{--tint:var(--study);--tint-bg:var(--study-bg)}
+.card.plan{--tint:var(--plan);--tint-bg:var(--plan-bg)}
 .card .rule{height:3px;width:34px;border-radius:2px;background:var(--tint)}
 .card h2{font-family:var(--serif);font-size:21px;font-weight:600;margin:0}
 .card .what{color:var(--ink-2);font-size:13.5px;margin:0;flex:1}
@@ -111,6 +115,14 @@ h1{font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:-.02em
       <p class="what">Deadlines, to-dos and what each course is currently
          covering this term.</p>
       <div class="src">Canvas</div>
+      <div class="tags"><span class="tag">Encrypted</span></div>
+    </a>
+    <a class="card plan" href="/plan/">
+      <div class="rule"></div>
+      <h2>Plan</h2>
+      <p class="what">Four weeks of everything dated at once — what is already
+         scheduled, what is due, and the training I think should go in the gaps.</p>
+      <div class="src">Google Calendar + Canvas + Garmin</div>
       <div class="tags"><span class="tag">Encrypted</span></div>
     </a>
   </div>
