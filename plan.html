@@ -17,15 +17,16 @@ sitemap: false
 :root{
   --ground:#F4F6F9; --surface:#FFFFFF; --sunk:#EDF1F6;
   --ink:#0C1826; --ink-2:#3D4F66; --muted:#69798F;
-  --line:#D9E1EB; --line-2:#E7EDF4;
-  --committed:#3D4F66; --committed-bg:#EAEEF4;
-  --run:#0F7A52;       --run-bg:#E3F2EB;
-  --intervals:#AD2E76; --intervals-bg:#FAE6F0;
-  --long:#0B5CAB;      --long-bg:#E6F0FA;
-  --strength:#6B3FA0;  --strength-bg:#F0EAF9;
-  --station:#A8761A;   --station-bg:#FAF1DE;
-  --deadline:#A82018;  --deadline-bg:#FBEAE8;
-  --reminder:#0E6E7A;  --reminder-bg:#E2F1F3;
+  --line:#D9E1EB; --line-2:#E7EDF4; --hour:#E9EEF4;
+  --committed:#3D4F66; --committed-bg:#E8ECF2;
+  --run:#0F7A52;       --run-bg:#DFF0E8;
+  --intervals:#AD2E76; --intervals-bg:#FAE3EF;
+  --long:#0B5CAB;      --long-bg:#E2EDF9;
+  --strength:#6B3FA0;  --strength-bg:#EEE7F8;
+  --station:#A8761A;   --station-bg:#F9EEDA;
+  --deadline:#A82018;  --deadline-bg:#FAE6E4;
+  --reminder:#0E6E7A;  --reminder-bg:#DEEFF1;
+  --now:#D03B3B;
   --shadow:0 1px 2px rgba(12,24,38,.06),0 6px 20px -12px rgba(12,24,38,.16);
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -33,8 +34,8 @@ sitemap: false
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --ground:#0B1220; --surface:#131C2B; --sunk:#0E1725;
   --ink:#E9EFF7; --ink-2:#B6C4D6; --muted:#8296AE;
-  --line:#26344A; --line-2:#1D2A3D;
-  --committed:#9DB0C8; --committed-bg:#1B2536;
+  --line:#26344A; --line-2:#1D2A3D; --hour:#1B2739;
+  --committed:#9DB0C8; --committed-bg:#1C2738;
   --run:#5FC295;       --run-bg:#11291F;
   --intervals:#E88BBE; --intervals-bg:#2E1322;
   --long:#7FB2EE;      --long-bg:#152539;
@@ -42,13 +43,14 @@ sitemap: false
   --station:#DFA660;   --station-bg:#2B2113;
   --deadline:#F0938A;  --deadline-bg:#331917;
   --reminder:#63BFCB;  --reminder-bg:#0F2A2E;
+  --now:#F0938A;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
 }}
 :root[data-theme="dark"]{
   --ground:#0B1220; --surface:#131C2B; --sunk:#0E1725;
   --ink:#E9EFF7; --ink-2:#B6C4D6; --muted:#8296AE;
-  --line:#26344A; --line-2:#1D2A3D;
-  --committed:#9DB0C8; --committed-bg:#1B2536;
+  --line:#26344A; --line-2:#1D2A3D; --hour:#1B2739;
+  --committed:#9DB0C8; --committed-bg:#1C2738;
   --run:#5FC295;       --run-bg:#11291F;
   --intervals:#E88BBE; --intervals-bg:#2E1322;
   --long:#7FB2EE;      --long-bg:#152539;
@@ -56,70 +58,118 @@ sitemap: false
   --station:#DFA660;   --station-bg:#2B2113;
   --deadline:#F0938A;  --deadline-bg:#331917;
   --reminder:#63BFCB;  --reminder-bg:#0F2A2E;
+  --now:#F0938A;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
   font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1180px;margin:0 auto;padding-block:26px 70px;padding-left:18px;padding-right:18px}
+.wrap{max-width:1280px;margin:0 auto;padding-block:26px 70px;padding-left:16px;padding-right:16px}
 h1{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0 0 3px}
-.sub{color:var(--muted);font-size:13px;margin:0 0 20px}
+.sub{color:var(--muted);font-size:13px;margin:0 0 18px}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-.legend{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
 .lg{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;
   padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
 .lg i{width:9px;height:9px;border-radius:2.5px;flex:none}
 
 .alert{background:var(--deadline-bg);border:1px solid var(--deadline);border-left-width:3px;
-  border-radius:8px;padding:11px 14px;margin-bottom:20px;font-size:13.5px}
+  border-radius:8px;padding:11px 14px;margin-bottom:18px;font-size:13.5px}
 .alert b{font-weight:600}
 
-.wk{margin-bottom:26px}
-.wk-h{display:flex;align-items:baseline;gap:10px;margin-bottom:9px}
+.wk{margin-bottom:30px}
+.wk-h{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
 .wk-h h2{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
   color:var(--muted);margin:0}
 .wk-h .rng{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.grid{grid-template-columns:1fr}}
 
-.day{background:var(--surface);border:1px solid var(--line);border-radius:9px;
-  padding:9px 9px 8px;min-height:104px;display:flex;flex-direction:column;gap:5px;
-  box-shadow:var(--shadow)}
-.day.is-today{border-color:var(--long);box-shadow:0 0 0 2px var(--long-bg),var(--shadow)}
-.day.is-past{opacity:.5}
-.dh{display:flex;align-items:baseline;gap:5px;margin-bottom:1px}
+/* ---- the grid ---- */
+.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);
+  border-radius:10px;box-shadow:var(--shadow)}
+.cal{display:grid;grid-template-columns:50px repeat(7,minmax(122px,1fr));
+  grid-template-rows:auto auto 1fr;min-width:934px}
+.corner{position:sticky;left:0;z-index:4;background:var(--surface);
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dh{padding:8px 8px 7px;border-bottom:1px solid var(--line);border-left:1px solid var(--line-2);
+  display:flex;align-items:baseline;gap:5px;background:var(--surface);position:sticky;top:0;z-index:3}
 .dh .dow{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
 .dh .num{font-weight:700;font-size:15px;line-height:1}
 .dh .mo{font-family:var(--mono);font-size:10px;color:var(--muted)}
-.dh .tag{margin-left:auto;font-family:var(--mono);font-size:9px;font-weight:600;
-  letter-spacing:.07em;text-transform:uppercase;color:var(--long)}
+.dh.is-today .num,.dh.is-today .dow{color:var(--now)}
+.dh.is-past{opacity:.55}
 
-.ev{border-left:3px solid var(--committed);background:var(--committed-bg);
-  border-radius:0 5px 5px 0;padding:4px 6px 4px 7px;font-size:12px;line-height:1.35}
-.ev .t{font-family:var(--mono);font-size:9.5px;color:var(--muted);display:block}
-.ev .n{font-weight:500;overflow-wrap:anywhere}
-.ev .w{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
-.ev.run{border-color:var(--run);background:var(--run-bg)}
-.ev.run .n{color:var(--run)}
-.ev.intervals{border-color:var(--intervals);background:var(--intervals-bg)}
-.ev.intervals .n{color:var(--intervals)}
-.ev.long{border-color:var(--long);background:var(--long-bg)}
-.ev.long .n{color:var(--long)}
-.ev.strength{border-color:var(--strength);background:var(--strength-bg)}
-.ev.strength .n{color:var(--strength)}
-.ev.station{border-color:var(--station);background:var(--station-bg)}
-.ev.station .n{color:var(--station)}
-.ev.deadline{border-color:var(--deadline);background:var(--deadline-bg)}
-.ev.deadline .n{color:var(--deadline)}
-.ev.reminder{border-color:var(--reminder);background:var(--reminder-bg)}
-.ev.reminder .n{color:var(--reminder)}
-.ev.conflict{outline:2px solid var(--deadline);outline-offset:1px}
+.ad-g{position:sticky;left:0;z-index:4;background:var(--surface);
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);padding:6px 4px;text-align:right}
+.ad{border-bottom:1px solid var(--line);border-left:1px solid var(--line-2);
+  padding:5px;display:flex;flex-direction:column;gap:3px;min-height:30px;background:var(--sunk)}
+.ad.is-past{opacity:.55}
 
-.free{margin-top:auto;padding-top:5px;border-top:1px dashed var(--line-2);
-  font-family:var(--mono);font-size:9.5px;color:var(--muted);line-height:1.5}
-.free b{color:var(--ink-2);font-weight:500}
+.tg{position:sticky;left:0;z-index:2;background:var(--surface);
+  border-right:1px solid var(--line);position:relative}
+.tl{position:absolute;right:5px;font-family:var(--mono);font-size:9.5px;color:var(--muted);
+  transform:translateY(-50%);white-space:nowrap}
+.col{position:relative;border-left:1px solid var(--line-2);
+  background:repeating-linear-gradient(to bottom,var(--hour) 0 1px,transparent 1px var(--hr))}
+.col.is-past{opacity:.55}
+.col.is-weekend{background-color:var(--sunk)}
+
+.ev{position:absolute;border-radius:4px;padding:2px 5px;overflow:hidden;
+  border-left:3px solid var(--committed);background:var(--committed-bg);
+  font-size:11px;line-height:1.25;cursor:default}
+.ev .t{font-family:var(--mono);font-size:9px;color:var(--muted);display:block}
+.ev .n{font-weight:600;overflow-wrap:anywhere;display:block}
+.ev.run{border-color:var(--run);background:var(--run-bg)} .ev.run .n{color:var(--run)}
+.ev.intervals{border-color:var(--intervals);background:var(--intervals-bg)} .ev.intervals .n{color:var(--intervals)}
+.ev.long{border-color:var(--long);background:var(--long-bg)} .ev.long .n{color:var(--long)}
+.ev.strength{border-color:var(--strength);background:var(--strength-bg)} .ev.strength .n{color:var(--strength)}
+.ev.station{border-color:var(--station);background:var(--station-bg)} .ev.station .n{color:var(--station)}
+.ev.conflict{outline:2px solid var(--deadline);outline-offset:-1px}
+.ev.short{padding-top:1px}
+.ev.short .t{display:inline;margin-right:4px}
+.ev.short .n{display:inline}
+
+.chip{border-left:3px solid var(--deadline);background:var(--deadline-bg);border-radius:3px;
+  padding:2px 5px;font-size:10px;line-height:1.3;font-weight:600;color:var(--deadline);
+  overflow-wrap:anywhere}
+.chip.reminder{border-color:var(--reminder);background:var(--reminder-bg);color:var(--reminder)}
+.chip.committed{border-color:var(--committed);background:var(--committed-bg);color:var(--ink-2)}
+.chip .t{font-family:var(--mono);font-weight:400;opacity:.8;margin-right:3px}
+
+.nowline{position:absolute;left:0;right:0;height:2px;background:var(--now);z-index:5;pointer-events:none}
+.nowline::before{content:"";position:absolute;left:-4px;top:-3px;width:8px;height:8px;
+  border-radius:50%;background:var(--now)}
+
+.hint{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:7px}
+
+/* ---- dragging recommendations ---- */
+.ev.drag{cursor:grab;touch-action:none}
+.ev.drag:hover{filter:brightness(.97)}
+.ev.dragging{cursor:grabbing;z-index:20;opacity:.92;
+  box-shadow:0 6px 18px -4px rgba(12,24,38,.35);outline:2px solid currentColor;outline-offset:-1px}
+.ev.moved::after{content:"";position:absolute;right:3px;top:3px;width:5px;height:5px;
+  border-radius:50%;background:currentColor;opacity:.75}
+.ghost{position:absolute;left:1px;right:2px;border-radius:4px;z-index:1;
+  border:1px dashed var(--muted);opacity:.5;pointer-events:none}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:14px}
+.bar .n{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-right:auto}
+.bar button{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 12px;
+  border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink-2);cursor:pointer}
+.bar button:hover:not(:disabled){border-color:var(--long);color:var(--long)}
+.bar button:disabled{opacity:.45;cursor:default}
+.bar button.primary{background:var(--long);border-color:var(--long);color:#fff}
+.bar button.primary:hover:not(:disabled){filter:brightness(1.08);color:#fff}
+.sheet{position:fixed;inset:0;background:rgba(12,24,38,.55);display:grid;place-items:center;
+  z-index:50;padding:20px}
+.sheet .box{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:20px;max-width:720px;width:100%;box-shadow:var(--shadow)}
+.sheet h3{margin:0 0 4px;font-size:16px}
+.sheet p{margin:0 0 12px;font-size:12.5px;color:var(--muted)}
+.sheet textarea{width:100%;height:230px;font-family:var(--mono);font-size:11.5px;
+  border:1px solid var(--line);border-radius:8px;background:var(--ground);color:var(--ink);
+  padding:10px;resize:vertical}
 
 .gate{max-width:380px;margin:14vh auto;padding:26px 26px 22px;background:var(--surface);
   border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
@@ -132,7 +182,7 @@ h1{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0 0 3px}
 .gate button[disabled]{opacity:.55;cursor:default}
 .gate .msg{margin:12px 0 0;font-size:12.5px;min-height:1.2em;color:var(--muted)}
 .gate .msg.err{color:var(--deadline)}
-footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);
+footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);
   font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.8}
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -156,22 +206,162 @@ footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);
   <p class="sub" id="sub"></p>
   <div id="alerts"></div>
   <div class="legend" id="legend"></div>
+  <div class="bar" id="bar"></div>
   <div id="weeks"></div>
   <footer id="foot"></footer>
 </div>
 
+<div class="sheet" id="sheet" hidden>
+  <div class="box">
+    <h3>Updated sessions.csv</h3>
+    <p>Your moves, as the file that generates them. Paste this over
+       <span class="mono">~/dev/calendar/sessions.csv</span>, or hand it to Claude,
+       and the moves survive the next rebuild.</p>
+    <textarea id="sheet-txt" readonly spellcheck="false"></textarea>
+    <div class="bar" style="margin:12px 0 0">
+      <button id="sheet-copy" class="primary">Copy</button>
+      <button id="sheet-close">Close</button>
+    </div>
+  </div>
+</div>
+
 <script id="payload" type="application/json"></script>
 <script>
+const DAY_START = 6*60, DAY_END = 22*60;   // 06:00 - 22:00
+const PPM = 0.75;                           // pixels per minute
+const H = (DAY_END - DAY_START) * PPM;      // grid body height
+const HOUR_PX = 60 * PPM;
 const KINDS = [
   ["committed","Scheduled"],["long","Long run"],["intervals","Intervals"],
   ["run","Easy run"],["strength","Strength"],["station","Station / Hyrox"],
   ["deadline","Due"],["reminder","Reminder"],
 ];
 const esc = s => (s??"").toString().replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const toMin = s => { const [h,m] = s.split(":"); return +h*60 + +m; };
+const hhmm = m => `${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`;
+const SNAP = 15;                      // minutes a drag snaps to
+const MOVABLE = new Set(["run","intervals","long","strength","station"]);
+const STORE = "plan.overrides.v1";
+
+/* Moves live in this browser only. The page is a static file on GitHub Pages
+   with nowhere to write, so a drag is remembered locally and exported as CSV
+   when you want it to become permanent. */
+let OV = {};
+try { OV = JSON.parse(localStorage.getItem(STORE) || "{}"); } catch(e) { OV = {}; }
+const saveOV = () => { try { localStorage.setItem(STORE, JSON.stringify(OV)); } catch(e){} };
+/* The same session title repeats every week, so the id has to include where
+   the session *started*, not where it currently sits — otherwise moving one
+   "Easy run 7 km" drags all four onto the same day. `home` is stamped from the
+   pristine payload and never changes. */
+const sid = it => `${it.kind}|${it.home}|${it.title}`;
+
+let DATA = null;
+
+/* Apply stored moves, then recompute lanes/conflicts from the result rather
+   than trusting what Python wrote — a drag has to update both. */
+function view(){
+  const d = JSON.parse(JSON.stringify(DATA));
+  const moved = [];
+  d.weeks.forEach(w => w.days.forEach(day => {
+    day.items = day.items.filter(it => {
+      if (!MOVABLE.has(it.kind)) return true;
+      it.home = it.home || day.date;
+      const o = OV[sid(it)];
+      if (!o) return true;
+      if (o.date === day.date) { it.start = o.start;
+        it.end = hhmm(toMin(o.start) + (it.minutes||60)); it.moved = true; return true; }
+      moved.push(Object.assign({}, it, {start:o.start,
+        end: hhmm(toMin(o.start) + (it.minutes||60)), moved:true}));
+      return false;
+    });
+  }));
+  moved.forEach(it => {
+    const o = OV[sid(it)];
+    d.weeks.forEach(w => w.days.forEach(day => {
+      if (day.date === o.date) day.items.push(it);
+    }));
+  });
+  d.weeks.forEach(w => w.days.forEach(day => {
+    day.items.sort((a,b)=> (a.all_day?0:1)-(b.all_day?0:1) ||
+                           (a.start||"").localeCompare(b.start||""));
+    day.conflicts = dayConflicts(day);
+  }));
+  d.all_conflicts = [];
+  d.weeks.forEach(w => w.days.forEach(day =>
+    day.conflicts.forEach(c => d.all_conflicts.push(`${day.date}: ${c}`))));
+  return d;
+}
+
+function dayConflicts(day){
+  const comm = day.items.filter(i=>i.kind==="committed" && !i.all_day && i.start && i.end);
+  const out = [];
+  day.items.filter(i=>MOVABLE.has(i.kind) && i.start && i.end).forEach(it=>{
+    const s = toMin(it.start), e = toMin(it.end);
+    comm.forEach(c=>{ if (s < toMin(c.end) && toMin(c.start) < e)
+      out.push(`${it.title} overlaps ${c.title}`); });
+  });
+  return out;
+}
+
+/* Google's approach: events that overlap in time share the column, side by
+   side. Sort by start, drop each into the first lane that is already free. */
+function lanes(items){
+  const sorted = items.slice().sort((a,b)=> a._s - b._s || b._e - a._e);
+  const ends = [];
+  sorted.forEach(it=>{
+    let lane = ends.findIndex(e => e <= it._s);
+    if (lane === -1) { lane = ends.length; ends.push(it._e); }
+    else ends[lane] = it._e;
+    it._lane = lane;
+  });
+  // A cluster of mutually overlapping events shares a lane count, so a lone
+  // event next to a busy hour still spans the full column.
+  sorted.forEach(it=>{
+    const overlapping = sorted.filter(o => o._s < it._e && it._s < o._e);
+    it._lanes = Math.max(...overlapping.map(o => o._lane)) + 1;
+  });
+  return sorted;
+}
+
+function paint(){ render(view()); }
+
+function renderBar(d){
+  const n = Object.keys(OV).length;
+  document.getElementById("bar").innerHTML =
+    `<span class="n">${n ? `${n} session${n>1?"s":""} moved — saved in this browser only`
+                         : "Drag any coloured recommendation to move it. Scheduled blocks are fixed."}</span>
+     <button id="b-export" class="primary"${n?"":" disabled"}>Export sessions.csv</button>
+     <button id="b-reset"${n?"":" disabled"}>Reset moves</button>`;
+  const ex = document.getElementById("b-export"), rs = document.getElementById("b-reset");
+  if (ex) ex.onclick = exportCSV;
+  if (rs) rs.onclick = () => {
+    if (!confirm("Discard every move and go back to the recommended plan?")) return;
+    OV = {}; saveOV(); paint();
+  };
+}
+
+function csvCell(v){
+  v = (v??"").toString();
+  return /[",\n]/.test(v) ? `"${v.replace(/"/g,'""')}"` : v;
+}
+
+function exportCSV(){
+  const d = view(), rows = [];
+  d.weeks.forEach(w => w.days.forEach(day => day.items.forEach(it => {
+    if (!MOVABLE.has(it.kind) || !it.start) return;
+    rows.push([day.date, it.start, it.minutes||60, it.kind, it.title, it.note||""]);
+  })));
+  rows.sort((a,b)=> (a[0]+a[1]).localeCompare(b[0]+b[1]));
+  const csv = ["date,start,minutes,kind,title,why"]
+    .concat(rows.map(r=>r.map(csvCell).join(","))).join("\n");
+  document.getElementById("sheet-txt").value = csv;
+  document.getElementById("sheet").hidden = false;
+}
 
 function render(d){
   document.getElementById("sub").textContent =
-    `${d.weeks.length} weeks from ${d.weeks[0].start} · built ${d.generated}`;
+    `${d.weeks.length} weeks from ${d.weeks[0].start} · 06:00–22:00 · built ${d.generated}`;
+  renderBar(d);
 
   document.getElementById("legend").innerHTML = KINDS.map(([k,label])=>{
     const n = d.counts[k]||0;
@@ -182,47 +372,162 @@ function render(d){
     ? `<div class="alert"><b>${d.all_conflicts.length} recommendation${d.all_conflicts.length>1?"s":""} collide with something already scheduled:</b><br>${d.all_conflicts.map(esc).join("<br>")}</div>`
     : "";
 
-  document.getElementById("weeks").innerHTML = d.weeks.map(w=>{
-    const last = w.days[6];
-    return `<section class="wk">
-      <div class="wk-h"><h2>${esc(w.iso)}</h2>
-        <span class="rng">${esc(w.days[0].month)} ${esc(w.days[0].day)} – ${esc(last.month)} ${esc(last.day)}</span></div>
-      <div class="grid">${w.days.map(dayHTML).join("")}</div>
-    </section>`;
-  }).join("");
+  document.getElementById("weeks").innerHTML = d.weeks.map(w=>weekHTML(w,d.today)).join("");
 
   document.getElementById("foot").innerHTML =
-    `Scheduled items come from the Google Calendar ICS feed. Recommendations are ` +
-    `suggestions placed in free windows, not bookings — nothing here writes back ` +
-    `to your calendar.<br>Free windows assume a 06:00–22:00 day and ignore gaps ` +
-    `under 75 minutes.`;
+    `Scheduled blocks come from the Google Calendar ICS feed. Everything else is a ` +
+    `suggestion placed in a free window — nothing here writes back to your calendar.` +
+    `<br>Anything outside 06:00–22:00 is clipped to the edge of the grid.`;
 }
 
-function dayHTML(day){
-  const cls = ["day", day.today?"is-today":"", day.past?"is-past":""].filter(Boolean).join(" ");
-  const items = day.items.map(it=>{
-    const when = it.all_day ? (it.note && /^\d\d:\d\d$/.test(it.note) ? it.note : "all day")
-                            : `${it.start}${it.end?"–"+it.end:""}`;
-    const note = (!it.all_day || !/^\d\d:\d\d$/.test(it.note||"")) && it.note
-                 ? `<span class="w">${esc(it.note)}</span>` : "";
-    const bad = (day.conflicts||[]).some(c=>c.startsWith(it.title)) ? " conflict" : "";
-    return `<div class="ev ${esc(it.kind)}${bad}"><span class="t">${esc(when)}</span>
-      <span class="n">${esc(it.title)}</span>${note}</div>`;
+function weekHTML(w, today){
+  const last = w.days[6];
+  const times = [];
+  for (let h = DAY_START/60; h <= DAY_END/60; h++){
+    const first = h === DAY_START/60, lastH = h === DAY_END/60;
+    const shift = first ? "translateY(0)" : lastH ? "translateY(-100%)" : "translateY(-50%)";
+    times.push(`<span class="tl" style="top:${((h*60)-DAY_START)*PPM}px;transform:${shift}">${String(h).padStart(2,"0")}:00</span>`);
+  }
+
+  const heads = w.days.map(day=>
+    `<div class="dh ${day.today?"is-today":""} ${day.past?"is-past":""}" data-date="${day.date}">
+       <span class="dow">${esc(day.label)}</span>
+       <span class="num">${esc(day.day)}</span>
+       <span class="mo">${esc(day.month)}</span>
+     </div>`).join("");
+
+  const allday = w.days.map(day=>{
+    const chips = day.items.filter(i=>i.all_day).map(i=>{
+      const cls = i.kind === "deadline" ? "" : ` ${i.kind}`;
+      const t = /^\d\d:\d\d$/.test(i.note||"") ? `<span class="t">${i.note}</span>` : "";
+      return `<div class="chip${cls}" title="${esc(i.title)}">${t}${esc(i.title)}</div>`;
+    }).join("");
+    return `<div class="ad ${day.past?"is-past":""}">${chips}</div>`;
   }).join("");
-  const free = (day.free||[]).length
-    ? `<div class="free"><b>free</b> ${day.free.map(f=>`${f.from}–${f.to}`).join("  ")}</div>` : "";
-  return `<div class="${cls}">
-    <div class="dh"><span class="dow">${esc(day.label)}</span>
-      <span class="num">${esc(day.day)}</span><span class="mo">${esc(day.month)}</span>
-      ${day.today?'<span class="tag">today</span>':""}</div>
-    ${items}${free}</div>`;
+
+  const cols = w.days.map((day,i)=>{
+    const timed = day.items.filter(x=>!x.all_day && x.start && x.end).map(x=>{
+      const s = Math.max(DAY_START, Math.min(DAY_END, toMin(x.start)));
+      const e = Math.max(s + 15, Math.min(DAY_END, toMin(x.end)));
+      return Object.assign({}, x, {_s:s, _e:e});
+    });
+    const placed = lanes(timed).map(it=>{
+      const top = (it._s - DAY_START) * PPM;
+      const h = Math.max(15 * PPM, (it._e - it._s) * PPM - 2);
+      const width = 100 / it._lanes, left = it._lane * width;
+      const bad = (day.conflicts||[]).some(c=>c.startsWith(it.title)) ? " conflict" : "";
+      const short = h < 34 ? " short" : "";
+      const can = MOVABLE.has(it.kind);
+      const drag = can ? " drag" : "";
+      const moved = it.moved ? " moved" : "";
+      const attrs = can
+        ? ` data-sid="${esc(sid(it))}" data-date="${esc(day.date)}" data-mins="${it.minutes||60}"`
+        : "";
+      const tip = can ? "  (drag to move)" : "";
+      return `<div class="ev ${esc(it.kind)}${bad}${short}${drag}${moved}"${attrs}
+        style="top:${top}px;height:${h}px;left:calc(${left}% + 1px);width:calc(${width}% - 3px)"
+        title="${esc(it.start)}–${esc(it.end)}  ${esc(it.title)}${it.note?"\n"+esc(it.note):""}${tip}">
+        <span class="t">${esc(it.start)}</span><span class="n">${esc(it.title)}</span></div>`;
+    }).join("");
+    const now = day.today ? nowLine() : "";
+    const weekend = (i===5||i===6) ? " is-weekend" : "";
+    return `<div class="col${weekend} ${day.past?"is-past":""}" style="height:${H}px;--hr:${HOUR_PX}px">${placed}${now}</div>`;
+  }).join("");
+
+  return `<section class="wk">
+    <div class="wk-h"><h2>${esc(w.iso)}</h2>
+      <span class="rng">${esc(w.days[0].month)} ${esc(w.days[0].day)} – ${esc(last.month)} ${esc(last.day)}</span></div>
+    <div class="scroll"><div class="cal">
+      <div class="corner"></div>${heads}
+      <div class="ad-g">all<br>day</div>${allday}
+      <div class="tg" style="height:${H}px">${times.join("")}</div>${cols}
+    </div></div>
+  </section>`;
 }
+
+function nowLine(){
+  const d = new Date();
+  const m = d.getHours()*60 + d.getMinutes();
+  if (m < DAY_START || m > DAY_END) return "";
+  return `<div class="nowline" style="top:${(m-DAY_START)*PPM}px"></div>`;
+}
+
+/* ---- drag to move a recommendation ---- */
+(function dragging(){
+  let st = null;
+
+  document.addEventListener("pointerdown", e => {
+    const el = e.target.closest(".ev.drag");
+    if (!el || e.button !== 0) return;
+    const cal = el.closest(".cal");
+    const cols = Array.from(cal.querySelectorAll(".col"));
+    const heads = Array.from(cal.querySelectorAll(".dh"));
+    st = {
+      el, cols,
+      dates: cols.map((c,i) => heads[i].dataset.date),
+      sid: el.dataset.sid,
+      mins: +el.dataset.mins,
+      grabY: e.clientY - el.getBoundingClientRect().top,
+      col: cols.indexOf(el.parentElement),
+    };
+    el.setPointerCapture(e.pointerId);
+    el.classList.add("dragging");
+    e.preventDefault();
+  });
+
+  document.addEventListener("pointermove", e => {
+    if (!st) return;
+    // Which column is the pointer over? Compare against live rects so this
+    // keeps working after a horizontal scroll mid-drag.
+    let ci = st.col;
+    st.cols.forEach((c,i) => {
+      const r = c.getBoundingClientRect();
+      if (e.clientX >= r.left && e.clientX <= r.right) ci = i;
+    });
+    const rect = st.cols[ci].getBoundingClientRect();
+    let top = e.clientY - rect.top - st.grabY;
+    let start = DAY_START + Math.round((top / PPM) / SNAP) * SNAP;
+    start = Math.max(DAY_START, Math.min(DAY_END - st.mins, start));
+    st.pending = { date: st.dates[ci], start: hhmm(start) };
+
+    if (st.cols[ci] !== st.el.parentElement) st.cols[ci].appendChild(st.el);
+    st.el.style.top = ((start - DAY_START) * PPM) + "px";
+    st.el.style.left = "1px";
+    st.el.style.width = "calc(100% - 3px)";
+    const t = st.el.querySelector(".t");
+    if (t) t.textContent = hhmm(start);
+  });
+
+  const finish = e => {
+    if (!st) return;
+    const el = st.el, pending = st.pending;
+    el.classList.remove("dragging");
+    st = null;
+    if (pending) { OV[el.dataset.sid] = pending; saveOV(); }
+    paint();
+  };
+  document.addEventListener("pointerup", finish);
+  document.addEventListener("pointercancel", finish);
+})();
+
+document.getElementById("sheet-close").onclick = () =>
+  document.getElementById("sheet").hidden = true;
+document.getElementById("sheet").addEventListener("click", e => {
+  if (e.target.id === "sheet") document.getElementById("sheet").hidden = true;
+});
+document.getElementById("sheet-copy").onclick = async () => {
+  const ta = document.getElementById("sheet-txt");
+  const btn = document.getElementById("sheet-copy");
+  try { await navigator.clipboard.writeText(ta.value); }
+  catch(e) { ta.select(); document.execCommand("copy"); }
+  btn.textContent = "Copied"; setTimeout(()=>btn.textContent="Copy", 1400);
+};
 
 (function(){
   const ENC_URL = "https://raw.githubusercontent.com/GeoffreyBian/geoffreybian.github.io/plan-data/plan.enc.json";
   const holder = document.getElementById("payload");
   const inline = holder ? holder.textContent.trim() : "";
-  if (inline.charAt(0) === "{") { render(JSON.parse(inline)); return; }
+  if (inline.charAt(0) === "{") { DATA = JSON.parse(inline); paint(); return; }
 
   const wrap=document.getElementById("wrap"), gate=document.getElementById("gate"),
         msg=document.getElementById("gate-msg"), btn=document.getElementById("gate-btn"),
@@ -253,7 +558,7 @@ function dayHTML(day){
     btn.disabled=true; msg.className="msg"; msg.textContent="Decrypting\u2026";
     try{
       const data = await decrypt(input.value, await load());
-      input.value=""; gate.hidden=true; wrap.hidden=false; render(data);
+      input.value=""; gate.hidden=true; wrap.hidden=false; DATA = data; paint();
     }catch(err){
       msg.className="msg err";
       msg.textContent = /Could not load/.test(err.message) ? err.message : "Wrong passphrase.";
