@@ -227,7 +227,7 @@ footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);
 
 <script id="payload" type="application/json"></script>
 <script>
-const DAY_START = 6*60, DAY_END = 22*60;   // 06:00 - 22:00
+const DAY_START = 6*60, DAY_END = 23*60;   // 06:00 - 23:00 (hockey runs late)
 const PPM = 0.75;                           // pixels per minute
 const H = (DAY_END - DAY_START) * PPM;      // grid body height
 const HOUR_PX = 60 * PPM;
@@ -360,7 +360,7 @@ function exportCSV(){
 
 function render(d){
   document.getElementById("sub").textContent =
-    `${d.weeks.length} weeks from ${d.weeks[0].start} · 06:00–22:00 · built ${d.generated}`;
+    `${d.weeks.length} weeks from ${d.weeks[0].start} · 06:00–23:00 · built ${d.generated}`;
   renderBar(d);
 
   document.getElementById("legend").innerHTML = KINDS.map(([k,label])=>{
@@ -377,7 +377,7 @@ function render(d){
   document.getElementById("foot").innerHTML =
     `Scheduled blocks come from the Google Calendar ICS feed. Everything else is a ` +
     `suggestion placed in a free window — nothing here writes back to your calendar.` +
-    `<br>Anything outside 06:00–22:00 is clipped to the edge of the grid.`;
+    `<br>Anything outside 06:00–23:00 is clipped to the edge of the grid.`;
 }
 
 function weekHTML(w, today){
