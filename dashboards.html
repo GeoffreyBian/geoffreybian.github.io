@@ -78,6 +78,13 @@ h1{font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:-.02em
   color:var(--muted);font-size:13px;max-width:62ch}
 .note code{font-family:var(--mono);font-size:12px;background:var(--sunk);
   padding:1px 5px;border-radius:4px;color:var(--ink-2)}
+.misc-head{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin:38px 0 10px}
+.misc{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.misc li{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;font-size:14px}
+.misc a{color:var(--accent);font-weight:500;text-decoration:none}
+.misc a:hover,.misc a:focus-visible{text-decoration:underline}
+.misc span{color:var(--muted);font-size:13px}
 .back{display:inline-block;margin-top:30px;font-family:var(--mono);font-size:12px;
   color:var(--muted);text-decoration:none}
 .back:hover{color:var(--accent)}
@@ -126,6 +133,12 @@ h1{font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:-.02em
       <div class="tags"><span class="tag">Encrypted</span></div>
     </a>
   </div>
+
+  <h2 class="misc-head">Miscellaneous</h2>
+  <ul class="misc">
+    <li><a href="/nvd/">NVD Opportunity Board</a>
+      <span>Startup research for our UBC New Venture Design team. Team password.</span></li>
+  </ul>
 
   <p class="note">Portfolio, Study and Plan ship no data at all. Each fetches an
      AES-256-GCM blob and decrypts it in the browser after a passphrase, so the
