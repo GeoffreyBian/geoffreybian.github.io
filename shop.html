@@ -1,0 +1,487 @@
+---
+layout: none
+permalink: /shop/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Encrypted, but there is no reason to be in anyone's index. -->
+<meta name="robots" content="noindex, nofollow">
+<style>
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<meta charset="utf-8">
+<title>Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Same tokens as the term board and the dashboards hub, so /shop reads as part
+   of one system rather than a fifth unrelated page. */
+:root{
+  --ground:#F4F6F9; --surface:#FFFFFF; --sunk:#EDF1F6;
+  --ink:#0C1826; --ink-2:#3D4F66; --muted:#69798F; --line:#D9E1EB; --line-2:#E7EDF4;
+  --navy:#002145; --accent:#0B5CAB;
+  --shop:#0E6E70; --shop-bg:#E2F0F0;
+  /* Status is reserved for state (the price verdict) and never reused as a
+     series colour. Every chip carries its word too, so the colour is never
+     the only thing saying what it means. */
+  --ok:#1B6844; --ok-bg:#E4F2EA;
+  --warn:#8A5B00; --warn-bg:#FAF1DF;
+  --crit:#A82018; --crit-bg:#FBEAE8;
+  /* Sequential, one hue light->dark, for discount depth. */
+  --seq-1:#CCE4E4; --seq-2:#8CC4C5; --seq-3:#3F9698; --seq-4:#0E6E70;
+  --shadow:0 1px 2px rgba(12,24,38,.06),0 6px 20px -12px rgba(12,24,38,.18);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0B1220; --surface:#131C2B; --sunk:#0E1725;
+  --ink:#E9EFF7; --ink-2:#B6C4D6; --muted:#8296AE; --line:#26344A; --line-2:#1D2A3D;
+  --navy:#8FB6E6; --accent:#7FB2EE;
+  --shop:#5FBEC0; --shop-bg:#10272B;
+  --ok:#79CFA4; --ok-bg:#122A1F;
+  --warn:#E0B160; --warn-bg:#2C2312;
+  --crit:#F0938A; --crit-bg:#331917;
+  --seq-1:#1B3A3C; --seq-2:#2E6A6C; --seq-3:#44989A; --seq-4:#5FBEC0;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --ground:#0B1220; --surface:#131C2B; --sunk:#0E1725;
+  --ink:#E9EFF7; --ink-2:#B6C4D6; --muted:#8296AE; --line:#26344A; --line-2:#1D2A3D;
+  --navy:#8FB6E6; --accent:#7FB2EE;
+  --shop:#5FBEC0; --shop-bg:#10272B;
+  --ok:#79CFA4; --ok-bg:#122A1F;
+  --warn:#E0B160; --warn-bg:#2C2312;
+  --crit:#F0938A; --crit-bg:#331917;
+  --seq-1:#1B3A3C; --seq-2:#2E6A6C; --seq-3:#44989A; --seq-4:#5FBEC0;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
+a{color:var(--accent)}
+.page{max-width:900px;margin:0 auto;padding:52px 24px 80px}
+.head{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:30px}
+h1{font-size:33px;letter-spacing:-.02em}
+.lede{color:var(--muted);font-size:14.5px;margin:9px 0 0;max-width:62ch}
+.gen{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:11px}
+
+/* KPI row. Stat tiles, not a chart — these are single headline numbers. */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);border-radius:11px;
+  overflow:hidden;margin-bottom:34px}
+.tile{background:var(--surface);padding:15px 16px}
+.tile .k{font-family:var(--mono);font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.tile .v{font-size:27px;font-weight:600;line-height:1;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums}
+.tile .s{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:6px}
+
+section{margin-bottom:38px}
+.lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:13px;
+  display:flex;align-items:center;gap:10px}
+.lbl::after{content:"";flex:1;height:1px;background:var(--line-2)}
+.lbl .state{font-family:var(--sans);font-size:10px;letter-spacing:.06em;
+  padding:2px 7px;border-radius:4px;background:var(--shop-bg);color:var(--shop)}
+.lbl .state.later{background:var(--sunk);color:var(--muted)}
+
+/* A want: the thing he intends to buy, with its candidates under it. */
+.want{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden}
+.want-top{display:flex;align-items:flex-start;gap:14px;padding:17px 19px}
+.want-top .rule{width:3px;align-self:stretch;min-height:34px;border-radius:2px;
+  background:var(--shop);flex:none}
+.want-top h3{font-size:19px}
+.want-top .meta{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
+.want-top .why{color:var(--ink-2);font-size:13.5px;margin:7px 0 0;max-width:68ch}
+.want-top .best{margin-left:auto;text-align:right;flex:none}
+.want-top .best .n{font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;
+  letter-spacing:-.015em;white-space:nowrap}
+.want-top .best .c{font-family:var(--mono);font-size:10px;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.08em}
+.nocand{padding:0 19px 17px 36px;color:var(--muted);font-size:13.5px}
+
+/* Candidate rows. Bar length = discount depth (magnitude, one hue). */
+.cand{display:grid;grid-template-columns:1fr 120px 150px 96px;gap:14px;
+  align-items:center;padding:13px 19px;border-top:1px solid var(--line-2)}
+.cand .who{min-width:0}
+.cand .who a{font-weight:500;font-size:14px;text-decoration:none;color:var(--ink)}
+.cand .who a:hover{color:var(--accent);text-decoration:underline}
+.cand .who .sub{font-family:var(--mono);font-size:10.5px;color:var(--muted);
+  margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cand .px{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cand .px .now{font-size:16px;font-weight:600}
+.cand .px .was{font-size:11.5px;color:var(--muted);text-decoration:line-through;
+  margin-left:5px}
+.cand .px .cur{font-family:var(--mono);font-size:9.5px;color:var(--muted);
+  display:block;letter-spacing:.07em}
+.meter{position:relative}
+.meter .track{height:8px;background:var(--sunk);border-radius:4px;overflow:hidden}
+.meter .fill{height:100%;border-radius:4px;background:var(--seq-4)}
+.meter .cap{font-family:var(--mono);font-size:10.5px;color:var(--ink-2);margin-top:5px}
+.meter.none .cap{color:var(--muted)}
+
+/* Status chip: colour + the word, never colour alone. */
+.chip{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;
+  text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap;
+  display:inline-block;font-weight:500}
+.chip.new_low{background:var(--ok-bg);color:var(--ok)}
+.chip.good{background:var(--ok-bg);color:var(--ok)}
+.chip.baseline{background:var(--shop-bg);color:var(--shop)}
+.chip.meh{background:var(--warn-bg);color:var(--warn)}
+.chip.bad{background:var(--crit-bg);color:var(--crit)}
+.chip.none{background:var(--sunk);color:var(--muted)}
+
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px;
+  background:var(--surface);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:11px 14px;font-weight:500;
+  border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:11px 14px;border-top:1px solid var(--line-2);vertical-align:middle}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;
+  font-family:var(--mono);font-size:12.5px}
+tr.dim td{color:var(--muted)}
+
+.note{background:var(--warn-bg);border:1px solid var(--warn);border-left-width:3px;
+  border-radius:9px;padding:14px 16px;font-size:13.5px;color:var(--ink)}
+.note b{font-weight:600}
+.note ul{margin:8px 0 0;padding-left:19px}
+.note li{margin-bottom:5px}
+.note li:last-child{margin-bottom:0}
+.note .w{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+
+.prof{background:var(--surface);border:1px solid var(--line);border-radius:11px;
+  box-shadow:var(--shadow);padding:18px 20px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 16px;font-size:13.5px}
+.prof dt{font-family:var(--mono);font-size:10px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);align-self:center;white-space:nowrap}
+.prof dd{margin:0;font-weight:500}
+.prof .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:3px}
+.prof .tag{font-family:var(--mono);font-size:10.5px;padding:2px 8px;border-radius:4px;
+  background:var(--shop-bg);color:var(--shop)}
+.prof .tag.alt{background:var(--sunk);color:var(--muted)}
+
+#tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .1s;
+  background:var(--ink);color:var(--surface);font-family:var(--mono);font-size:11px;
+  padding:7px 10px;border-radius:5px;z-index:60;white-space:pre;line-height:1.55;
+  max-width:300px;white-space:pre-wrap}
+.foot{border-top:1px solid var(--line);margin-top:40px;padding-top:16px;
+  font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.8}
+.back{font-family:var(--mono);font-size:11.5px;color:var(--accent);
+  text-decoration:none;display:inline-block;margin-bottom:18px}
+.back:hover{text-decoration:underline}
+
+.gate{max-width:380px;margin:14vh auto;padding:26px 26px 22px;background:var(--surface);
+  border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.gate h1{font-size:19px;margin:0 0 6px}
+.gate p{color:var(--muted);font-size:13px;margin:0 0 18px;line-height:1.55}
+.gate input{width:100%;padding:10px 12px;font-family:var(--mono);font-size:14px;
+  border:1px solid var(--line);border-radius:7px;background:var(--ground);color:var(--ink)}
+.gate input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.gate button{margin-top:11px;width:100%;padding:10px;border:0;border-radius:7px;
+  background:var(--navy);color:#fff;font-family:var(--sans);font-size:14px;
+  font-weight:600;cursor:pointer}
+:root[data-theme="dark"] .gate button,:root:not([data-theme="light"]) .gate button{color:#0B1220}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .gate button{color:#fff}}
+.gate button[disabled]{opacity:.55;cursor:default}
+.gate .msg{margin:12px 0 0;font-size:12.5px;min-height:1.2em;color:var(--muted)}
+.gate .msg.err{color:var(--crit)}
+
+@media (max-width:760px){
+  .page{padding:30px 16px 60px}
+  .cand{grid-template-columns:1fr;gap:9px;padding:14px 16px}
+  .cand .px{text-align:left}
+  .want-top{flex-wrap:wrap}
+  .want-top .best{margin-left:0;text-align:left;width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+
+
+<div class="gate" id="gate" hidden>
+  <h1>Shop</h1>
+  <p>This page is encrypted. The passphrase is checked in your browser and
+     never sent anywhere.</p>
+  <form id="gate-form">
+    <input type="password" id="gate-pass" aria-label="Passphrase" autocomplete="current-password">
+    <button type="submit" id="gate-btn">Unlock</button>
+  </form>
+  <p class="msg" id="gate-msg" role="status"></p>
+</div>
+
+<div class="page" id="shell">
+  <a class="back" href="/dashboards/">&larr; Dashboards</a>
+  <header class="head">
+    <h1>Shop</h1>
+    <p class="lede">Things worth buying, what they cost now, and how that compares
+      with every price seen before. Prices are only ever written here from a page
+      that was actually read &mdash; nothing is estimated.</p>
+    <div class="gen" id="gen"></div>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+  <div id="months"></div>
+
+  <section id="others-sec">
+    <div class="lbl">Also tracking</div>
+    <div class="wrap"><table id="others"></table></div>
+  </section>
+
+  <section id="unver-sec">
+    <div class="lbl">Could not be verified</div>
+    <div id="unver"></div>
+  </section>
+
+  <section>
+    <div class="lbl">Profile</div>
+    <div class="prof" id="prof"></div>
+  </section>
+
+  <div class="foot" id="foot"></div>
+</div>
+<div id="tip" role="status"></div>
+
+<script id="payload" type="application/json"></script>
+<script>
+function boot(D) {
+  const esc = s => (s ?? "").toString().replace(/[&<>"]/g,
+    c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+  const money = n => n == null ? "—" : "$" + n.toLocaleString("en-CA",
+    { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+  const VERDICT = { new_low: "new low", good: "good", baseline: "baseline",
+                    meh: "meh", bad: "bad" };
+
+  document.getElementById("gen").textContent = "Built " + D.generated;
+
+  // ---- tiles ----
+  const c = D.counts;
+  const openNow = D.months.filter(m => m.state === "open")
+                           .reduce((a, m) => a + m.wants.length, 0);
+  const allCands = D.months.flatMap(m => m.wants).flatMap(w => w.candidates);
+  const bestOff = Math.max(0, ...allCands.map(x => x.discount ? x.discount.off : 0));
+  const saved = allCands.filter(x => x.discount)
+    .reduce((a, x) => Math.max(a, x.discount.was - x.discount.now), 0);
+  const tiles = [
+    { k: "Wants open now", v: openNow, s: "of " + c.wants + " on the list" },
+    { k: "Candidates priced", v: c.candidates, s: "all verified on-page" },
+    { k: "Deepest discount", v: bestOff ? bestOff + "%" : "—",
+      s: saved ? money(saved) + " off list" : "nothing on sale" },
+    { k: "Unverified", v: c.unverified, s: c.unverified ? "see below" : "none" },
+  ];
+  document.getElementById("tiles").innerHTML = tiles.map(t => `
+    <div class="tile"><div class="k">${esc(t.k)}</div>
+      <div class="v">${esc(t.v)}</div>
+      <div class="s">${esc(t.s)}</div></div>`).join("");
+
+  // ---- wants, grouped by target month ----
+  // Meter length is discount depth. Scaled against the deepest discount on the
+  // page, not against 100%, so the shortest bar is still readable.
+  const meterMax = Math.max(bestOff, 1);
+  const cand = x => {
+    const d = x.discount;
+    const pct = d ? Math.round(d.off / meterMax * 100) : 0;
+    const v = x.verdict || "none";
+    return `
+    <div class="cand">
+      <div class="who">
+        ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>`
+                : `<span>${esc(x.name)}</span>`}
+        <div class="sub" title="${esc(x.notes)}">${esc(x.notes.slice(0, 96))}</div>
+      </div>
+      <div class="px">
+        <span class="now">${money(x.price)}</span>${d ? `<span class="was">${money(d.was)}</span>` : ""}
+        <span class="cur">CAD</span>
+      </div>
+      <div class="meter ${d ? "" : "none"}" data-tip="${esc(
+          d ? `${x.name}\n${money(d.now)} from ${money(d.was)}\n${d.off}% off list`
+            : `${x.name}\n${money(x.price)}, no discount showing`)}">
+        <div class="track"><div class="fill" style="width:${d ? Math.max(pct, 3) : 0}%"></div></div>
+        <div class="cap">${d ? d.off + "% off" : "full price"}</div>
+      </div>
+      <div><span class="chip ${esc(v)}">${esc(VERDICT[v] || "unverified")}</span></div>
+    </div>`;
+  };
+
+  document.getElementById("months").innerHTML = D.months.map(m => `
+    <section>
+      <div class="lbl">${esc(m.label)}
+        <span class="state ${m.state}">${m.state === "open" ? "hunting now" : "not yet"}</span>
+      </div>
+      ${m.wants.map(w => `
+        <div class="want">
+          <div class="want-top">
+            <div class="rule"></div>
+            <div style="min-width:0">
+              <h3>${esc(w.name)}</h3>
+              <div class="meta">${w.candidates.length} candidate${w.candidates.length === 1 ? "" : "s"}${
+                  w.category ? " · " + esc(w.category) : ""}</div>
+              <p class="why">${esc(w.notes)}</p>
+            </div>
+            ${w.cheapest != null ? `<div class="best">
+              <div class="n">${money(w.cheapest)}</div>
+              <div class="c">best found</div></div>` : ""}
+          </div>
+          ${w.candidates.length ? w.candidates.map(cand).join("")
+            : `<div class="nocand">Nothing sourced yet${
+                 m.state === "open" ? " — this month is open, so it is next up."
+                                    : ", by design: hunting starts when the month arrives."}</div>`}
+        </div>`).join("")}
+    </section>`).join("");
+
+  // ---- also tracking ----
+  const others = D.others;
+  document.getElementById("others").innerHTML = `
+    <thead><tr><th>Item</th><th>Category</th><th class="num">Now</th>
+      <th class="num">Low</th><th class="num">High</th><th>Verdict</th><th class="num">Checks</th></tr></thead>
+    <tbody>${others.map(r => `
+      <tr class="${r.price == null ? "dim" : ""}">
+        <td>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>`
+                    : esc(r.name)}</td>
+        <td>${esc(r.category)}</td>
+        <td class="num">${money(r.price)}</td>
+        <td class="num">${money(r.low)}</td>
+        <td class="num">${money(r.high)}</td>
+        <td><span class="chip ${esc(r.verdict || "none")}">${esc(VERDICT[r.verdict] || "unverified")}</span></td>
+        <td class="num">${r.checks}</td>
+      </tr>`).join("")}</tbody>`;
+
+  // ---- what could not be verified ----
+  const u = D.unverified;
+  document.getElementById("unver-sec").hidden = !u.length;
+  if (u.length) {
+    const noPrice = u.filter(x => !x.has_price).length;
+    const stale = u.length - noPrice;
+    const head = [
+      noPrice ? `<b>${noPrice} item${noPrice === 1 ? " has" : "s have"} no price at all.</b>` : "",
+      stale ? `${stale} other${stale === 1 ? " has" : "s have"} a price but failed some checks.` : "",
+    ].filter(Boolean).join(" ");
+    document.getElementById("unver").innerHTML = `
+      <div class="note">${head} Recorded as unverified rather than guessed.
+        <ul>${u.map(x => `<li>${esc(x.name)}
+          <span class="w">· ${x.runs} failed check${x.runs === 1 ? "" : "s"}${
+            x.has_price ? `, last priced ${money(x.price)}` : ", never priced"}</span>
+          ${x.note ? `<br><span class="w">${esc(x.note.slice(0, 190))}</span>` : ""}</li>`).join("")}</ul>
+      </div>`;
+  }
+
+  // ---- profile: pulled straight from profile.md's tables ----
+  const P = D.profile || "";
+  const grab = re => { const m = P.match(re); return m ? m[1].trim() : null; };
+  const sizes = [
+    ["Jeans / pants", grab(/Jeans \/ pants \|\s*\*\*(.+?)\*\*/)],
+    ["Shirts", grab(/Shirts \|\s*\*\*(.+?)\*\*/)],
+    ["Stick", [grab(/Handedness \|\s*\*\*(.+?)\*\*/), grab(/Flex \|\s*\*\*(.+?)\*\*/)]
+      .filter(Boolean).join(", ")],
+  ].filter(r => r[1]);
+  document.getElementById("prof").innerHTML = `
+    <dl>
+      ${sizes.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}
+      <dt>Shop first</dt><dd><div class="tags">
+        <span class="tag">Abercrombie</span><span class="tag">Banana Republic</span></div></dd>
+      <dt>Evaluating</dt><dd><div class="tags">
+        <span class="tag alt">COS</span><span class="tag alt">Quince</span></div></dd>
+      <dt>Pro deal</dt><dd><div class="tags">
+        <span class="tag">Helly Hansen</span><span class="tag">Arc'teryx</span>
+        <span class="tag">Mammut</span></div>
+        <div class="sub" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:5px">
+          Outdoor Prolink (.ca) &mdash; the price the open market has to beat</div></dd>
+    </dl>`;
+
+  document.getElementById("foot").innerHTML =
+    `${c.wants} wants, ${c.candidates} priced candidates, ${c.tracked} other tracked items.<br>` +
+    `Verdicts recompute from price_log.csv against each item's own history &mdash; ` +
+    `new low, within 5%, 5&ndash;15% over, or worse. Not advice.`;
+
+  // ---- hover layer on the meters ----
+  const tip = document.getElementById("tip");
+  document.querySelectorAll(".meter[data-tip]").forEach(el => {
+    el.addEventListener("mousemove", e => {
+      tip.textContent = el.dataset.tip;
+      tip.style.opacity = "1";
+      let x = e.clientX + 14, y = e.clientY - 10;
+      if (x + 310 > window.innerWidth) x = e.clientX - 310;
+      tip.style.left = x + "px";
+      tip.style.top = y + "px";
+    });
+    el.addEventListener("mouseleave", () => { tip.style.opacity = "0"; });
+  });
+}
+</script>
+
+<script>
+(function () {
+  const ENC_URL = "https://raw.githubusercontent.com/GeoffreyBian/geoffreybian.github.io/shop-data/shop.enc.json";
+  const inline = (document.getElementById("payload").textContent || "").trim();
+  const shell = document.getElementById("shell");
+
+  if (inline.charAt(0) === "{") { boot(JSON.parse(inline)); return; }
+
+  const gate = document.getElementById("gate");
+  const msg = document.getElementById("gate-msg");
+  const btn = document.getElementById("gate-btn");
+  const input = document.getElementById("gate-pass");
+  shell.hidden = true;
+  gate.hidden = false;
+
+  const b64 = (s) => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  let blob = null;
+
+  async function load() {
+    if (!blob) {
+      const res = await fetch(ENC_URL, { cache: "no-cache" });
+      if (!res.ok) throw new Error("Could not load the data file (" + res.status + ").");
+      blob = await res.json();
+    }
+    return blob;
+  }
+
+  async function decrypt(pass, b) {
+    const base = await crypto.subtle.importKey(
+      "raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
+    const key = await crypto.subtle.deriveKey(
+      { name: "PBKDF2", salt: b64(b.salt), iterations: b.iterations, hash: "SHA-256" },
+      base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+    const plain = await crypto.subtle.decrypt(
+      { name: "AES-GCM", iv: b64(b.iv) }, key, b64(b.ciphertext));
+    return JSON.parse(new TextDecoder().decode(plain));
+  }
+
+  document.getElementById("gate-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!input.value) return;
+    btn.disabled = true;
+    msg.className = "msg";
+    msg.textContent = "Decrypting…";
+    try {
+      const data = await decrypt(input.value, await load());
+      input.value = "";
+      gate.hidden = true;
+      shell.hidden = false;
+      boot(data);
+    } catch (err) {
+      // GCM authenticates as it decrypts, so a failure here is a wrong key
+      // rather than a corrupt file — unless the fetch itself was the problem.
+      msg.className = "msg err";
+      msg.textContent = /Could not load/.test(err.message) ? err.message : "Wrong passphrase.";
+      btn.disabled = false;
+      input.select();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
