@@ -377,27 +377,30 @@ function boot(D) {
       </div>`;
   }
 
-  // ---- profile: pulled straight from profile.md's tables ----
-  const P = D.profile || "";
-  const grab = re => { const m = P.match(re); return m ? m[1].trim() : null; };
-  const sizes = [
-    ["Jeans / pants", grab(/Jeans \/ pants \|\s*\*\*(.+?)\*\*/)],
-    ["Shirts", grab(/Shirts \|\s*\*\*(.+?)\*\*/)],
-    ["Stick", [grab(/Handedness \|\s*\*\*(.+?)\*\*/), grab(/Flex \|\s*\*\*(.+?)\*\*/)]
-      .filter(Boolean).join(", ")],
+  // ---- profile ----
+  // Every value here arrives in the encrypted payload. Nothing about his sizes,
+  // his retailers or his pro-deal brands is written into this template, so the
+  // public page source gives none of it away before the passphrase.
+  const P = D.profile || {};
+  const S = P.sizes || {};
+  const rows = [
+    ["Jeans / pants", S.jeans],
+    ["Shirts", S.shirts],
+    ["Stick", [S.hand, S.flex ? S.flex + " flex" : null].filter(Boolean).join(", ")],
   ].filter(r => r[1]);
+  const tags = (list, alt) => (list || []).map(t =>
+    `<span class="tag${alt ? " alt" : ""}">${esc(t)}</span>`).join("");
   document.getElementById("prof").innerHTML = `
     <dl>
-      ${sizes.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}
-      <dt>Shop first</dt><dd><div class="tags">
-        <span class="tag">Abercrombie</span><span class="tag">Banana Republic</span></div></dd>
-      <dt>Evaluating</dt><dd><div class="tags">
-        <span class="tag alt">COS</span><span class="tag alt">Quince</span></div></dd>
-      <dt>Pro deal</dt><dd><div class="tags">
-        <span class="tag">Helly Hansen</span><span class="tag">Arc'teryx</span>
-        <span class="tag">Mammut</span></div>
-        <div class="sub" style="font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:5px">
-          Outdoor Prolink (.ca) &mdash; the price the open market has to beat</div></dd>
+      ${rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}
+      ${P.shop_first && P.shop_first.length
+        ? `<dt>Shop first</dt><dd><div class="tags">${tags(P.shop_first)}</div></dd>` : ""}
+      ${P.evaluating && P.evaluating.length
+        ? `<dt>Evaluating</dt><dd><div class="tags">${tags(P.evaluating, true)}</div></dd>` : ""}
+      ${P.prolink && P.prolink.length
+        ? `<dt>Pro deal</dt><dd><div class="tags">${tags(P.prolink)}</div>
+             <div style="font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:5px">
+               the price the open market has to beat</div></dd>` : ""}
     </dl>`;
 
   document.getElementById("foot").innerHTML =
