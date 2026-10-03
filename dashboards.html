@@ -25,6 +25,7 @@ sitemap: false
   --body:#A2661C;  --body-bg:#FAF0E1;
   --study:#0B5CAB; --study-bg:#E7F0FA;
   --plan:#AD2E76;  --plan-bg:#FAE6F0;
+  --shop:#0E6E70;  --shop-bg:#E2F0F0;
   --shadow:0 1px 2px rgba(12,24,38,.06),0 6px 20px -12px rgba(12,24,38,.18);
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -38,6 +39,7 @@ sitemap: false
   --body:#DFA660;  --body-bg:#2E2213;
   --study:#7FB2EE; --study-bg:#152539;
   --plan:#E88BBE;  --plan-bg:#2E1322;
+  --shop:#5FBEC0;  --shop-bg:#10272B;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
 }}
 :root[data-theme="dark"]{
@@ -48,6 +50,7 @@ sitemap: false
   --body:#DFA660;  --body-bg:#2E2213;
   --study:#7FB2EE; --study-bg:#152539;
   --plan:#E88BBE;  --plan-bg:#2E1322;
+  --shop:#5FBEC0;  --shop-bg:#10272B;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
 }
 *{box-sizing:border-box}
@@ -66,6 +69,7 @@ h1{font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:-.02em
 .card.body{--tint:var(--body);--tint-bg:var(--body-bg)}
 .card.study{--tint:var(--study);--tint-bg:var(--study-bg)}
 .card.plan{--tint:var(--plan);--tint-bg:var(--plan-bg)}
+.card.shop{--tint:var(--shop);--tint-bg:var(--shop-bg)}
 .card .rule{height:3px;width:34px;border-radius:2px;background:var(--tint)}
 .card h2{font-family:var(--serif);font-size:21px;font-weight:600;margin:0}
 .card .what{color:var(--ink-2);font-size:13.5px;margin:0;flex:1}
@@ -132,6 +136,14 @@ h1{font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:-.02em
       <div class="src">Google Calendar + Canvas + Garmin</div>
       <div class="tags"><span class="tag">Encrypted</span></div>
     </a>
+    <a class="card shop" href="/shop/">
+      <div class="rule"></div>
+      <h2>Shop</h2>
+      <p class="what">Things worth buying, aimed at the month I want them, with
+         every price checked against what that item has cost before.</p>
+      <div class="src">Retailer pages, read not estimated</div>
+      <div class="tags"><span class="tag">Encrypted</span></div>
+    </a>
   </div>
 
   <h2 class="misc-head">Miscellaneous</h2>
@@ -144,9 +156,9 @@ h1{font-family:var(--serif);font-weight:600;font-size:34px;letter-spacing:-.02em
       <span>Deep dive on shared AI agent sessions: competitors, customers, tech, market and risks. Team password.</span></li>
   </ul>
 
-  <p class="note">Portfolio, Study and Plan ship no data at all. Each fetches an
+  <p class="note">Portfolio, Study, Plan and Shop ship no data at all. Each fetches an
      AES-256-GCM blob and decrypts it in the browser after a passphrase, so the
-     figures never sit at a fetchable URL in the clear. All three take the same
+     figures never sit at a fetchable URL in the clear. They all take the same
      passphrase. Train is public by choice — the code and the data are the
      point of it.</p>
 
