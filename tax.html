@@ -1,0 +1,386 @@
+---
+layout: none
+permalink: /tax/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Encrypted, but there is no reason to be in anyone's index. -->
+<meta name="robots" content="noindex, nofollow">
+<style>
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<meta charset="utf-8">
+<title>Tax</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Same tokens as the other boards so this reads as one system. */
+:root{
+  --ground:#F4F6F9; --surface:#FFFFFF; --sunk:#EDF1F6;
+  --ink:#0C1826; --ink-2:#3D4F66; --muted:#69798F; --line:#D9E1EB; --line-2:#E7EDF4;
+  --navy:#002145; --accent:#0B5CAB;
+  --tax:#5B3FA8; --tax-bg:#EDE8F8;
+  /* status is reserved for state and always ships with a word */
+  --ok:#1B6844; --ok-bg:#E4F2EA;
+  --warn:#8A5B00; --warn-bg:#FAF1DF;
+  --crit:#A82018; --crit-bg:#FBEAE8;
+  --seq-4:#5B3FA8; --seq-2:#A595D2;
+  --shadow:0 1px 2px rgba(12,24,38,.06),0 6px 20px -12px rgba(12,24,38,.18);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0B1220; --surface:#131C2B; --sunk:#0E1725;
+  --ink:#E9EFF7; --ink-2:#B6C4D6; --muted:#8296AE; --line:#26344A; --line-2:#1D2A3D;
+  --navy:#8FB6E6; --accent:#7FB2EE;
+  --tax:#A994E8; --tax-bg:#1C1630;
+  --ok:#79CFA4; --ok-bg:#122A1F;
+  --warn:#E0B160; --warn-bg:#2C2312;
+  --crit:#F0938A; --crit-bg:#331917;
+  --seq-4:#A994E8; --seq-2:#5B4A8C;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --ground:#0B1220; --surface:#131C2B; --sunk:#0E1725;
+  --ink:#E9EFF7; --ink-2:#B6C4D6; --muted:#8296AE; --line:#26344A; --line-2:#1D2A3D;
+  --navy:#8FB6E6; --accent:#7FB2EE;
+  --tax:#A994E8; --tax-bg:#1C1630;
+  --ok:#79CFA4; --ok-bg:#122A1F;
+  --warn:#E0B160; --warn-bg:#2C2312;
+  --crit:#F0938A; --crit-bg:#331917;
+  --seq-4:#A994E8; --seq-2:#5B4A8C;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
+a{color:var(--accent)}
+.page{max-width:900px;margin:0 auto;padding:52px 24px 80px}
+.head{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:28px}
+h1{font-size:33px;letter-spacing:-.02em}
+.lede{color:var(--muted);font-size:14.5px;margin:9px 0 0;max-width:64ch}
+.gen{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:11px}
+.back{font-family:var(--mono);font-size:11.5px;color:var(--accent);text-decoration:none;
+  display:inline-block;margin-bottom:18px}
+.back:hover{text-decoration:underline}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:32px}
+.tile{background:var(--surface);padding:15px 16px}
+.tile .k{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:7px}
+.tile .v{font-size:26px;font-weight:600;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile .v.crit{color:var(--crit)} .tile .v.ok{color:var(--ok)}
+.tile .s{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:6px}
+
+section{margin-bottom:36px}
+.lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:13px;display:flex;align-items:center;gap:10px}
+.lbl::after{content:"";flex:1;height:1px;background:var(--line-2)}
+.sub{color:var(--ink-2);font-size:13.5px;margin:-4px 0 14px;max-width:70ch}
+
+.act{display:grid;grid-template-columns:3px 108px 1fr;gap:14px;background:var(--surface);
+  border:1px solid var(--line);border-radius:11px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden}
+.act .stripe{background:var(--muted)}
+.act.crit .stripe{background:var(--crit)} .act.warn .stripe{background:var(--warn)}
+.act.info .stripe{background:var(--tax)}
+.act .when{font-family:var(--mono);font-size:11.5px;color:var(--ink);padding:15px 0 15px 0;font-weight:500}
+.act .when small{display:block;color:var(--muted);font-weight:400;margin-top:3px}
+.act .body{padding:15px 18px 15px 0}
+.act h3{font-size:15.5px;font-family:var(--sans);font-weight:600;margin-bottom:5px}
+.act p{margin:0;color:var(--ink-2);font-size:13.5px;max-width:66ch}
+
+.note{background:var(--crit-bg);border:1px solid var(--crit);border-left-width:3px;
+  border-radius:10px;padding:15px 17px;font-size:14px;color:var(--ink)}
+.note.w{background:var(--warn-bg);border-color:var(--warn)}
+.note b{font-weight:600}
+.note .fig{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px;background:var(--surface);
+  box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+  text-align:left;padding:11px 14px;font-weight:500;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px 14px;border-top:1px solid var(--line-2);vertical-align:top}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-family:var(--mono);font-size:12.5px}
+tr.em td{font-weight:600;color:var(--ink);background:var(--sunk)}
+tr.neg td.num{color:var(--muted)}
+.chip{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+  padding:3px 8px;border-radius:4px;white-space:nowrap;display:inline-block;font-weight:500}
+.chip.keep{background:var(--ok-bg);color:var(--ok)}
+.chip.move{background:var(--warn-bg);color:var(--warn)}
+.chip.drop{background:var(--crit-bg);color:var(--crit)}
+
+figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:11px;
+  box-shadow:var(--shadow);padding:18px 20px 12px;position:relative}
+figure .ft{font-size:14px;font-weight:600}
+figure .fn{color:var(--muted);font-size:12.5px;margin-top:2px}
+svg{display:block;width:100%;height:auto;overflow:visible;margin-top:12px}
+#tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .1s;background:var(--ink);
+  color:var(--surface);font-family:var(--mono);font-size:11px;padding:7px 10px;border-radius:5px;
+  z-index:60;white-space:pre-wrap;max-width:280px;line-height:1.5}
+
+ul.pl{margin:0;padding:0;list-style:none;background:var(--surface);border:1px solid var(--line);
+  border-radius:11px;box-shadow:var(--shadow);overflow:hidden}
+ul.pl li{padding:12px 16px;border-top:1px solid var(--line-2);font-size:13.5px;color:var(--ink-2)}
+ul.pl li:first-child{border-top:0}
+code{font-family:var(--mono);font-size:12px;background:var(--sunk);padding:1px 5px;border-radius:3px}
+.foot{border-top:1px solid var(--line);margin-top:38px;padding-top:16px;font-family:var(--mono);
+  font-size:11px;color:var(--muted);line-height:1.8}
+
+.gate{max-width:380px;margin:14vh auto;padding:26px 26px 22px;background:var(--surface);
+  border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.gate h1{font-size:19px;margin:0 0 6px}
+.gate p{color:var(--muted);font-size:13px;margin:0 0 18px;line-height:1.55}
+.gate input{width:100%;padding:10px 12px;font-family:var(--mono);font-size:14px;border:1px solid var(--line);
+  border-radius:7px;background:var(--ground);color:var(--ink)}
+.gate input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.gate button{margin-top:11px;width:100%;padding:10px;border:0;border-radius:7px;background:var(--navy);
+  color:#fff;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer}
+:root[data-theme="dark"] .gate button,:root:not([data-theme="light"]) .gate button{color:#0B1220}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .gate button{color:#fff}}
+.gate button[disabled]{opacity:.55;cursor:default}
+.gate .msg{margin:12px 0 0;font-size:12.5px;min-height:1.2em;color:var(--muted)}
+.gate .msg.err{color:var(--crit)}
+@media (max-width:720px){
+  .page{padding:28px 16px 60px}
+  .act{grid-template-columns:3px 1fr;gap:12px}
+  .act .when{padding:14px 0 0 0}
+  .act .body{padding:0 16px 14px 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+
+
+<div class="gate" id="gate" hidden>
+  <h1>Tax</h1>
+  <p>This page is encrypted. The passphrase is checked in your browser and never sent anywhere.</p>
+  <form id="gate-form">
+    <input type="password" id="gate-pass" aria-label="Passphrase" autocomplete="current-password">
+    <button type="submit" id="gate-btn">Unlock</button>
+  </form>
+  <p class="msg" id="gate-msg" role="status"></p>
+</div>
+
+<div class="page" id="shell">
+  <a class="back" href="/dashboards/">&larr; Dashboards</a>
+  <header class="head">
+    <h1>Tax</h1>
+    <p class="lede">The 2025 CRA dispute, what 2026 is going to cost, and what to do
+      about the accounts before leaving Canada. Figures are reconstructed from the
+      filed returns and notices, not from a tax professional.</p>
+    <div class="gen" id="gen"></div>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <section>
+    <div class="lbl">Do these, in this order</div>
+    <div id="actions"></div>
+  </section>
+
+  <section>
+    <div class="lbl">The 2025 dispute</div>
+    <div id="dispute"></div>
+  </section>
+
+  <section>
+    <div class="lbl">2025 as filed and assessed</div>
+    <div class="sub" id="fxnote"></div>
+    <div class="wrap" style="margin-bottom:12px"><table id="t-us"></table></div>
+    <div class="wrap"><table id="t-cra"></table></div>
+  </section>
+
+  <section>
+    <div class="lbl">2026 projection</div>
+    <div class="sub" id="y26note"></div>
+    <div class="wrap" style="margin-bottom:14px"><table id="t-26us"></table></div>
+    <figure>
+      <div class="ft">What each tranche of deduction is actually worth</div>
+      <div class="fn">Bars are tax saved per tranche, as a rate. The first dollars are
+        nearly worthless because they shrink Canadian tax the foreign tax credit was
+        already covering. Hover for detail.</div>
+      <svg id="chart" viewBox="0 0 860 260" role="img"
+        aria-label="Marginal value of each RRSP deduction tranche, rising from 8.9 percent on the first 4000 dollars to 28.2 percent above 20000"></svg>
+    </figure>
+    <div class="wrap" style="margin-top:14px"><table id="t-scen"></table></div>
+  </section>
+
+  <section>
+    <div class="lbl">Before leaving Canada</div>
+    <div class="wrap"><table id="t-cb"></table></div>
+  </section>
+
+  <section>
+    <div class="lbl">Open questions</div>
+    <ul class="pl" id="open"></ul>
+  </section>
+
+  <section>
+    <div class="lbl">Where the documents are</div>
+    <ul class="pl" id="docs"></ul>
+  </section>
+
+  <div class="foot" id="foot"></div>
+</div>
+<div id="tip" role="status"></div>
+
+<script id="payload" type="application/json"></script>
+<script>
+function boot(D){
+  const esc=s=>(s??"").toString().replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+  const m=(n,d=2)=>n==null?"—":(n<0?"-":"")+"$"+Math.abs(n).toLocaleString("en-CA",{minimumFractionDigits:d,maximumFractionDigits:d});
+  const m0=n=>m(n,0);
+  const days=iso=>Math.round((new Date(iso+"T00:00:00")-new Date())/864e5);
+
+  document.getElementById("gen").textContent="Updated "+D.updated+" · figures in CAD unless marked USD";
+
+  const dp=D.dispute;
+  document.getElementById("tiles").innerHTML=[
+    {k:"Due Nov 5",v:m0(dp.balance),s:"CRA reassessment",c:"crit"},
+    {k:"Disputed",v:m0(dp.disputed),s:"foreign tax credit",c:""},
+    {k:"If objection wins",v:m0(dp.corrected_balance),s:"corrected balance",c:""},
+    {k:"2026 saving available",v:m0(7220),s:"RRSP + FHSA",c:"ok"}
+  ].map(t=>`<div class="tile"><div class="k">${esc(t.k)}</div>
+     <div class="v ${t.c}">${t.v}</div><div class="s">${esc(t.s)}</div></div>`).join("");
+
+  document.getElementById("actions").innerHTML=D.actions.map(a=>{
+    const d=days(a.due);
+    const when=d<0?`${-d}d overdue`:d===0?"today":`in ${d} days`;
+    return `<div class="act ${esc(a.sev)}"><div class="stripe"></div>
+      <div class="when">${esc(a.due)}<small>${esc(when)}</small></div>
+      <div class="body"><h3>${esc(a.what)}</h3><p>${esc(a.why)}</p></div></div>`;
+  }).join("");
+
+  document.getElementById("dispute").innerHTML=`
+    <div class="note"><b>CRA's credit is exactly your FICA.</b>
+      <span class="fig">${m(dp.cra_ftc)}</span> is Social Security plus Medicare
+      (<span class="fig">${m(dp.fica_usd)}</span> USD) converted at ${D.fx.avg2025}, to the cent.
+      ${esc(dp.note)}
+      <br><br>Correct credit <span class="fig">${m(dp.correct_ftc)}</span>,
+      shortfall <span class="fig">${m(dp.correct_ftc-dp.cra_ftc)}</span>,
+      disputed with interest <span class="fig">${m(dp.disputed)}</span>.</div>`;
+
+  const tbl=(id,head,rows)=>document.getElementById(id).innerHTML=
+    `<thead><tr>${head.map((h,i)=>`<th${i?' class="num"':''}>${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows}</tbody>`;
+
+  document.getElementById("fxnote").textContent=
+    `Converted at the Bank of Canada 2025 annual average of ${D.fx.avg2025}.`;
+  tbl("t-us",["2025 United States","USD","CAD"],D.y2025.us.map(r=>{
+    const em=/CREDITABLE|PAID/.test(r[0])?' class="em"':(r[1]<0?' class="neg"':'');
+    return `<tr${em}><td>${esc(r[0])}</td><td class="num">${m(r[1])}</td><td class="num">${m(r[2])}</td></tr>`;}).join(""));
+  tbl("t-cra",["2025 Canada, as reassessed","CAD"],D.y2025.cra.map(r=>
+    `<tr${/Balance due/.test(r[0])?' class="em"':''}><td>${esc(r[0])}</td><td class="num">${m(r[1])}</td></tr>`).join(""));
+
+  document.getElementById("y26note").textContent=D.y2026.assumption+
+    ` US wages ${m0(D.y2026.usd_wages)} USD, converted at ${D.fx.used2026}.`;
+  tbl("t-26us",["2026 United States","USD"],D.y2026.us.map(r=>
+    `<tr${/Creditable/.test(r[0])?' class="em"':''}><td>${esc(r[0])}</td><td class="num">${m0(r[1])}</td></tr>`).join(""));
+  tbl("t-scen",["2026 scenario","Canadian tax","Both countries"],D.y2026.scenarios.map((r,i)=>
+    `<tr${i===2?' class="em"':''}><td>${esc(r[0])}</td><td class="num">${m0(r[1])}</td><td class="num">${m0(r[2])}</td></tr>`).join(""));
+
+  tbl("t-cb",["Account","Do what","Why"],D.crossborder.map(r=>{
+    const c=/keep/.test(r[1])?"keep":/transfer/.test(r[1])?"move":"drop";
+    return `<tr><td style="white-space:nowrap">${esc(r[0])}</td>
+      <td><span class="chip ${c}">${esc(r[1])}</span></td>
+      <td style="color:var(--ink-2)">${esc(r[2])}</td></tr>`;}).join(""));
+
+  document.getElementById("open").innerHTML=D.open.map(o=>`<li>${esc(o)}</li>`).join("");
+  document.getElementById("docs").innerHTML=D.docs.map(d=>
+    `<li><code>${esc(d[0])}</code><br>${esc(d[1])}</li>`).join("");
+
+  // ---- tranche chart: magnitude, one hue, thin marks, selective labels ----
+  (function(){
+    const t=D.y2026.tranches, svg=document.getElementById("chart"), tip=document.getElementById("tip");
+    const W=860,H=260,M={t:16,r:14,b:46,l:46};
+    const pw=W-M.l-M.r, ph=H-M.t-M.b;
+    const max=30, band=pw/t.length, bw=Math.min(74,band-10);
+    const y=v=>M.t+ph-(v/max)*ph;
+    let s="";
+    for(let g=0;g<=30;g+=10){
+      s+=`<line x1="${M.l}" y1="${y(g)}" x2="${M.l+pw}" y2="${y(g)}" stroke="var(--line-2)" stroke-width="1"/>`;
+      s+=`<text x="${M.l-9}" y="${y(g)+4}" text-anchor="end" font-size="10.5" font-family="var(--mono)" fill="var(--muted)">${g}%</text>`;
+    }
+    t.forEach((r,i)=>{
+      const cx=M.l+band*i+band/2, h=Math.max(2,(r[3]/max)*ph);
+      const col=r[3]<15?"var(--seq-2)":"var(--seq-4)";
+      s+=`<rect x="${cx-bw/2}" y="${y(r[3])}" width="${bw}" height="${h}" rx="4" fill="${col}"
+            data-tip="${esc(r[0])}\nsaves ${m0(r[2])} on ${m0(r[1])}\n= ${r[3]}% effective"/>`;
+      // selective direct labels: only the weakest and the strongest
+      if(i===0||i===t.length-1)
+        s+=`<text x="${cx}" y="${y(r[3])-8}" text-anchor="middle" font-size="12" font-weight="600"
+             font-family="var(--mono)" fill="var(--ink)">${r[3]}%</text>`;
+      s+=`<text x="${cx}" y="${H-26}" text-anchor="middle" font-size="10" font-family="var(--mono)"
+           fill="var(--muted)">${esc(r[0].replace('RRSP+FHSA ',''))}</text>`;
+    });
+    s+=`<line x1="${M.l}" y1="${y(0)}" x2="${M.l+pw}" y2="${y(0)}" stroke="var(--line)" stroke-width="1"/>`;
+    s+=`<text x="${M.l+pw/2}" y="${H-6}" text-anchor="middle" font-size="10.5" font-family="var(--mono)"
+         fill="var(--muted)">cumulative deduction</text>`;
+    svg.innerHTML=s;
+    svg.querySelectorAll("rect[data-tip]").forEach(el=>{
+      el.addEventListener("mousemove",e=>{tip.textContent=el.dataset.tip;tip.style.opacity="1";
+        let x=e.clientX+14;if(x+290>innerWidth)x=e.clientX-290;
+        tip.style.left=x+"px";tip.style.top=(e.clientY-10)+"px";});
+      el.addEventListener("mouseleave",()=>tip.style.opacity="0");
+    });
+  })();
+
+  document.getElementById("foot").innerHTML=
+    "Reconstructed from the filed US returns, the CRA notices of assessment and reassessment, "+
+    "and the W-2. Not prepared by a tax professional and not filing advice. The FICA match and "+
+    "the departure-tax exposure are the two items worth an accountant's time.";
+}
+</script>
+
+<script>
+(function(){
+  const ENC_URL="https://raw.githubusercontent.com/GeoffreyBian/geoffreybian.github.io/tax-data/tax.enc.json";
+  const inline=(document.getElementById("payload").textContent||"").trim();
+  const shell=document.getElementById("shell");
+  if(inline.charAt(0)==="{"){boot(JSON.parse(inline));return;}
+  const gate=document.getElementById("gate"),msg=document.getElementById("gate-msg"),
+        btn=document.getElementById("gate-btn"),input=document.getElementById("gate-pass");
+  shell.hidden=true; gate.hidden=false;
+  const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+  let blob=null;
+  async function load(){
+    if(!blob){const r=await fetch(ENC_URL,{cache:"no-cache"});
+      if(!r.ok)throw new Error("Could not load the data file ("+r.status+").");
+      blob=await r.json();}
+    return blob;}
+  async function decrypt(pass,b){
+    const base=await crypto.subtle.importKey("raw",new TextEncoder().encode(pass),"PBKDF2",false,["deriveKey"]);
+    const key=await crypto.subtle.deriveKey(
+      {name:"PBKDF2",salt:b64(b.salt),iterations:b.iterations,hash:"SHA-256"},
+      base,{name:"AES-GCM",length:256},false,["decrypt"]);
+    const plain=await crypto.subtle.decrypt({name:"AES-GCM",iv:b64(b.iv)},key,b64(b.ciphertext));
+    return JSON.parse(new TextDecoder().decode(plain));}
+  document.getElementById("gate-form").addEventListener("submit",async e=>{
+    e.preventDefault(); if(!input.value)return;
+    btn.disabled=true; msg.className="msg"; msg.textContent="Decrypting…";
+    try{const data=await decrypt(input.value,await load());
+      input.value=""; gate.hidden=true; shell.hidden=false; boot(data);}
+    catch(err){
+      // GCM authenticates as it decrypts, so failure here is a wrong key
+      // unless the fetch itself was the problem.
+      msg.className="msg err";
+      msg.textContent=/Could not load/.test(err.message)?err.message:"Wrong passphrase.";
+      btn.disabled=false; input.select();}
+  });
+})();
+</script>
+
+</body>
+</html>
