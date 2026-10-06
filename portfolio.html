@@ -77,6 +77,9 @@ sitemap: false
   header.page-head { margin-bottom: 22px; }
   header.page-head h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
   header.page-head .meta { color: var(--text-muted); font-size: 12.5px; }
+  header.page-head .sidelink { margin-top: 3px; }
+  header.page-head .sidelink a { color: var(--s1); text-decoration: none; }
+  header.page-head .sidelink a:hover { text-decoration: underline; }
 
   section { margin-bottom: 36px; }
   h2.sec {
@@ -288,6 +291,10 @@ sitemap: false
   <header class="page-head">
     <h1>Portfolio Dashboard</h1>
     <div class="meta" id="generated-at"></div>
+    <div class="meta sidelink">
+      <!-- Absolute, because this template also renders inside the Claude artifact. -->
+      <a href="https://geoffreybian.github.io/tax/">Tax &rarr;</a>
+    </div>
   </header>
 
   <section>
