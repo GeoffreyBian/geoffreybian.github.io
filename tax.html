@@ -178,58 +178,54 @@ code{font-family:var(--mono);font-size:12px;background:var(--sunk);padding:1px 5
   <a class="back" href="/dashboards/">&larr; Dashboards</a>
   <header class="head">
     <h1>Tax</h1>
-    <p class="lede">The 2025 CRA dispute, what 2026 is going to cost, and what to do
-      about the accounts before leaving Canada. Figures are reconstructed from the
-      filed returns and notices, not from a tax professional.</p>
+    <p class="lede" id="lede"></p>
     <div class="gen" id="gen"></div>
   </header>
 
   <div class="tiles" id="tiles"></div>
 
   <section>
-    <div class="lbl">Do these, in this order</div>
+    <div class="lbl" id="l-actions"></div>
     <div id="actions"></div>
   </section>
 
   <section>
-    <div class="lbl">The 2025 dispute</div>
+    <div class="lbl" id="l-dispute"></div>
     <div id="dispute"></div>
   </section>
 
   <section>
-    <div class="lbl">2025 as filed and assessed</div>
+    <div class="lbl" id="l-y2025"></div>
     <div class="sub" id="fxnote"></div>
     <div class="wrap" style="margin-bottom:12px"><table id="t-us"></table></div>
     <div class="wrap"><table id="t-cra"></table></div>
   </section>
 
   <section>
-    <div class="lbl">2026 projection</div>
+    <div class="lbl" id="l-y2026"></div>
     <div class="sub" id="y26note"></div>
     <div class="wrap" style="margin-bottom:14px"><table id="t-26us"></table></div>
     <figure>
-      <div class="ft">What each tranche of deduction is actually worth</div>
-      <div class="fn">Bars are tax saved per tranche, as a rate. The first dollars are
-        nearly worthless because they shrink Canadian tax the foreign tax credit was
-        already covering. Hover for detail.</div>
+      <div class="ft" id="chart-t"></div>
+      <div class="fn" id="chart-n"></div>
       <svg id="chart" viewBox="0 0 860 260" role="img"
-        aria-label="Marginal value of each RRSP deduction tranche, rising from 8.9 percent on the first 4000 dollars to 28.2 percent above 20000"></svg>
+        aria-label="Chart"></svg>
     </figure>
     <div class="wrap" style="margin-top:14px"><table id="t-scen"></table></div>
   </section>
 
   <section>
-    <div class="lbl">Before leaving Canada</div>
+    <div class="lbl" id="l-cb"></div>
     <div class="wrap"><table id="t-cb"></table></div>
   </section>
 
   <section>
-    <div class="lbl">Open questions</div>
+    <div class="lbl" id="l-open"></div>
     <ul class="pl" id="open"></ul>
   </section>
 
   <section>
-    <div class="lbl">Where the documents are</div>
+    <div class="lbl" id="l-docs"></div>
     <ul class="pl" id="docs"></ul>
   </section>
 
@@ -245,6 +241,11 @@ function boot(D){
   const m0=n=>m(n,0);
   const days=iso=>Math.round((new Date(iso+"T00:00:00")-new Date())/864e5);
 
+  document.getElementById("lede").textContent=D.lede;
+  const L=D.labels;
+  ["actions","dispute","y2025","y2026","cb","open","docs"].forEach(k=>{const e=document.getElementById("l-"+k); if(e)e.textContent=L[k];});
+  document.getElementById("chart-t").textContent=L.chart_t;
+  document.getElementById("chart-n").textContent=L.chart_n;
   document.getElementById("gen").textContent="Updated "+D.updated+" · figures in CAD unless marked USD";
 
   const dp=D.dispute;
@@ -265,7 +266,7 @@ function boot(D){
   }).join("");
 
   document.getElementById("dispute").innerHTML=`
-    <div class="note"><b>CRA's credit is exactly your FICA.</b>
+    <div class="note"><b>${esc(dp.headline)}</b>
       <span class="fig">${m(dp.cra_ftc)}</span> is Social Security plus Medicare
       (<span class="fig">${m(dp.fica_usd)}</span> USD) converted at ${D.fx.avg2025}, to the cent.
       ${esc(dp.note)}
@@ -337,10 +338,7 @@ function boot(D){
     });
   })();
 
-  document.getElementById("foot").innerHTML=
-    "Reconstructed from the filed US returns, the CRA notices of assessment and reassessment, "+
-    "and the W-2. Not prepared by a tax professional and not filing advice. The FICA match and "+
-    "the departure-tax exposure are the two items worth an accountant's time.";
+  document.getElementById("foot").textContent=D.footer;
 }
 </script>
 
