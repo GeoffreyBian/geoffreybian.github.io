@@ -1,7 +1,7 @@
 ---
 layout: page
 title: GreenPASS
-description: Cuts data center carbon emissions by shifting cloud workloads, at no extra cost to users.
+description: Shifts cloud workloads across regions to cut carbon emissions, at no extra cost to users.
 img: assets/img/covers/greenpass.jpg
 importance: 1
 category: Research
