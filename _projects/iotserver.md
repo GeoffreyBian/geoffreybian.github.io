@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Internet of Things Server
+title: IoT Server
 description: Server that exposes actuator control and real-time sensor interfaces to connected clients.
 img: assets/img/covers/iot.jpg
 importance: 5

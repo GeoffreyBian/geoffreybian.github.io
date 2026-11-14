@@ -1,7 +1,7 @@
 ---
 layout: page
 title: GreenPASS
-description: Collaborative workload shifting framework designed to reduce data center carbon emissions without increasing user costs.
+description: Cuts data center carbon emissions by shifting cloud workloads, at no extra cost to users.
 img: assets/img/covers/greenpass.jpg
 importance: 1
 category: Research

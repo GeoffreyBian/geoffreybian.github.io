@@ -1,7 +1,7 @@
 ---
 layout: page 
 title: Wings Bird Classifier
-description: Image classification pipeline utilizing custom CNNs and transfer learning (ResNet-50) to identify bird species.
+description: Bird species classifier using custom CNNs and ResNet-50 transfer learning.
 img: assets/img/covers/wings.jpg
 importance: 2
 category: Projects

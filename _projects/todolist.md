@@ -1,7 +1,7 @@
 ---
 layout: page
 title: To-Do List App
-description: Application to track and notify about events, reminders, and goals built while I was in high school!
+description: Tracks events, reminders and goals, with notifications. Built in high school.
 img: assets/img/covers/todolist.jpg
 importance: 9
 category: Projects

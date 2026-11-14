@@ -1,7 +1,7 @@
 ---
 layout: page 
 title: UBC Baja Mechatronics
-description: Distributed 7-node CAN network (suspension, rear PCB, and steering wheel ECUs) reporting to a Raspberry Pi dashboard.
+description: Seven-node CAN network of STM32 ECUs reporting to a Raspberry Pi dashboard.
 img: assets/img/covers/baja.jpg
 importance: 1
 category: Projects

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Grid-Aware Cloud
-description: Optimization of Battery Energy Storage Systems (BESS) for data center cost reduction and grid stability.
+description: Battery storage optimization for data center cost reduction and grid stability.
 img: assets/img/covers/grid_aware.jpg
 importance: 2
 category: Research
