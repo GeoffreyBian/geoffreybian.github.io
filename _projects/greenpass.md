@@ -1,8 +1,8 @@
 ---
 layout: page
-title: GreenPASS optimization
+title: GreenPASS
 description: Collaborative workload shifting framework designed to reduce data center carbon emissions without increasing user costs.
-# img: assets/img/baja_can_dashboard.jpg
+img: assets/img/covers/greenpass.jpg
 importance: 1
 category: Research
 ---

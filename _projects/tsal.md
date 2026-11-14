@@ -2,7 +2,7 @@
 layout: page 
 title: Tractive System Light
 description: Safety-critical PCB designed for the UBC Formula Electric Quadruna electric race car to monitor voltage differentials. 
-# img: assets/img/tsal_project.jpg 
+img: assets/img/covers/tsal.jpg
 importance: 4
 category: Projects
 

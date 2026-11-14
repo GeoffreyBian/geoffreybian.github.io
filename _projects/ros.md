@@ -2,7 +2,7 @@
 layout: page 
 title: F1TENTH Race Vehicle
 description: A predictive ROS2 system using an Extended Kalman Filter and RGB-D sensor fusion to avoid high-speed dynamic obstacles.
-# img: assets/img/doa_thumbnail.jpg
+img: assets/img/covers/f1tenth.jpg
 importance: 3
 category: Projects
 ---

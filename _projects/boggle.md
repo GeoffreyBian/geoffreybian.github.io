@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Boggle Board Game
-description: Word search game on interactive interface that allows users to guess words and compete against a computer bot. 
-# img: assets/img/boggle2.png
+description: Word search game with an interactive board where you compete against a computer bot.
+img: assets/img/covers/boggle.jpg
 importance: 7
 category: Projects
 ---

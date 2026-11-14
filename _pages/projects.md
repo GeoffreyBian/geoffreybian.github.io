@@ -59,4 +59,8 @@ horizontal: false
   </div>
   {%- endif -%}
 {%- endif -%}
+<p class="cover-credits">Cover photos from Wikimedia Commons:
+GreenPASS, <a href="https://commons.wikimedia.org/wiki/File:Google_Data_Center,_Council_Bluffs_Iowa_(49062863796).jpg">Chad Davis</a> (CC BY 2.0);
+Grid-Aware Cloud, <a href="https://commons.wikimedia.org/wiki/File:High_voltage_transmission_tower_and_lines._Auburn_WA.jpg">Ron Clausen</a> (CC0);
+Wings, <a href="https://commons.wikimedia.org/wiki/File:Eurasian_magpie_2024_03_03_02.jpg">Alexis Lours</a> (CC BY 4.0). Cropped.</p>
 </div>

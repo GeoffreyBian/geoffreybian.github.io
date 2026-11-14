@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Audio Manipulation
-description: Application to enhance audio clips through signal processing techniques including the discrete fourier transform
-# img: assets/img/audio1.jpg
+description: Enhances audio clips with signal processing techniques, including the discrete Fourier transform.
+img: assets/img/covers/audio.jpg
 importance: 8
 category: Projects
 ---

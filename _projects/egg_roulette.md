@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Egg Roulette
-description: A MuJoCo study on the SO-101 arm. Can a robot learn how hard to squeeze from people wearing a touch-sensing glove?
-img: assets/img/egg_roulette/hero.png
+description: A MuJoCo study on the SO-101 arm. Can a robot learn how hard to squeeze from people wearing a touch glove?
+img: assets/img/covers/egg_roulette.jpg
 importance: 2
 category: Projects
 ---

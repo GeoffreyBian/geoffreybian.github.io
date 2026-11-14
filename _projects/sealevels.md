@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Sea Levels Analysis
-description: Analyzing different terrains to collect data on effect of rising sea levels in a simulated environment. 
-# img: assets/img/sealevels2.png
+description: Simulates rising sea levels across different terrains to see which areas flood.
+img: assets/img/covers/sealevels.jpg
 importance: 6
 category: Projects
 ---
