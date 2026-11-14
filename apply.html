@@ -212,6 +212,11 @@ tr.dim td{color:var(--muted)}
 .chip[aria-pressed="true"]{background:var(--navy);color:var(--ground);border-color:var(--navy)}
 .job{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:0 0 12px;box-shadow:var(--shadow)}
 .job.done{opacity:.6}
+.job .tick{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--muted);cursor:pointer;user-select:none}
+.job .tick input{width:17px;height:17px;accent-color:var(--ok);cursor:pointer;margin:0}
+.job .tick input:disabled{cursor:default}
+.sync{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:-8px 0 22px;font-size:12.5px;color:var(--muted)}
+.sync button{font-family:var(--mono);font-size:11.5px;padding:6px 11px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink-2);cursor:pointer}
 .job .top{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .job .co{font-family:var(--serif);font-weight:600;font-size:18px}
 .job .role{font-size:14.5px;color:var(--ink)}
@@ -251,6 +256,7 @@ tr.dim td{color:var(--muted)}
   </header>
   <div class="tiles" id="tiles"></div>
   <div class="chips" id="chips"></div>
+  <div class="sync" id="sync"></div>
   <div id="list"></div>
   <section><div class="lbl">Not eligible on a TN (US person required)</div><div id="blocked"></div></section>
 </div>
@@ -259,15 +265,44 @@ tr.dim td{color:var(--muted)}
 <script>
 function boot(D) {
   const esc = s => (s ?? "").toString().replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+  // Ticks live in this browser only. The page is static, so there is nowhere
+  // shared to write them; tracker.csv stays the source of truth and the copy
+  // button is how a tick gets back into it.
+  const STORE = "apply-board-ticks";
+  let ticks = {};
+  try { ticks = JSON.parse(localStorage.getItem(STORE) || "{}") || {}; } catch (e) { ticks = {}; }
+  const save = () => { try { localStorage.setItem(STORE, JSON.stringify(ticks)); } catch (e) {} };
+  const id = t => t.link || (t.company + "|" + t.role);
+  const inTracker = t => t.status !== "found";
+  const isDone = t => inTracker(t) || !!ticks[id(t)];
+  const pending = () => D.targets.filter(t => t.tier !== "blocked" && !inTracker(t) && ticks[id(t)]);
+
   document.getElementById("gen").textContent = "Built " + D.generated;
-  const c = D.counts;
-  document.getElementById("tiles").innerHTML = [
-    ["Open to new grads", c.apply, "apply now"], ["Reaches", c.reach, "some experience asked"],
-    ["Already applied", c.applied, "from tracker.csv"], ["Warm contact", c.warm, "someone you know there"]
-  ].map(([k,v,s]) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join("");
+  function tiles() {
+    const live = D.targets.filter(t => t.tier !== "blocked");
+    document.getElementById("tiles").innerHTML = [
+      ["Open to new grads", D.counts.apply, "apply now"], ["Reaches", D.counts.reach, "some experience asked"],
+      ["Applied", live.filter(isDone).length, "of " + live.length + " postings"], ["Warm contact", D.counts.warm, "someone you know there"]
+    ].map(([k,v,s]) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join("");
+  }
   const F = [["all","All"],["apply","New grad OK"],["reach","Reaches"],["todo","Not applied"],["warm","Warm contact"]];
   let cur = "all";
   const chips = document.getElementById("chips");
+  const sync = document.getElementById("sync");
+  function drawSync() {
+    const p = pending();
+    sync.innerHTML = p.length
+      ? `<span>${p.length} ticked here but not yet in tracker.csv.</span><button type="button" id="copy">Copy list for Claude</button><span id="copied" role="status"></span>`
+      : "";
+  }
+  sync.addEventListener("click", async e => {
+    if (!e.target.closest("#copy")) return;
+    const txt = "I applied to these, please log them in tracker.csv:\n" +
+      pending().map(t => `- ${t.company}: ${t.role} (ticked ${ticks[id(t)]}) ${t.link}`).join("\n");
+    const out = document.getElementById("copied");
+    try { await navigator.clipboard.writeText(txt); out.textContent = "Copied."; }
+    catch (err) { out.textContent = "Copy failed; select the text below."; sync.insertAdjacentHTML("beforeend", `<pre style="white-space:pre-wrap;width:100%">${esc(txt)}</pre>`); }
+  });
   function person(p) {
     const em = p.emails.length ? " " + p.emails.map(e => `<code>${esc(e)}</code>`).join(" ") : "";
     const li = p.linkedin ? ` <a href="${esc(p.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>` : "";
@@ -277,19 +312,28 @@ function boot(D) {
   function draw() {
     chips.innerHTML = F.map(([k,l]) => `<button class="chip" aria-pressed="${k===cur}" data-k="${k}">${l}</button>`).join("");
     const rows = D.targets.filter(t => t.tier !== "blocked").filter(t =>
-      cur === "all" || t.tier === cur || (cur === "todo" && t.status === "found") || (cur === "warm" && t.contacts.some(p => p.warm)));
-    document.getElementById("list").innerHTML = rows.map(t => {
-      const done = t.status !== "found";
-      const st = done ? `<span class="tag ok">${esc(t.status)}${t.applied ? " " + esc(t.applied) : ""}</span>`
-                      : `<span class="tag ${t.tier === "apply" ? "warn" : ""}">${t.tier === "apply" ? "new grad ok" : "reach"}</span>`;
+      cur === "all" || t.tier === cur || (cur === "todo" && !isDone(t)) || (cur === "warm" && t.contacts.some(p => p.warm)));
+    document.getElementById("list").innerHTML = rows.map((t, n) => {
+      const done = isDone(t), tracked = inTracker(t), k = esc(id(t));
+      const st = tracked ? `<span class="tag ok">${esc(t.status)}${t.applied ? " " + esc(t.applied) : ""}</span>`
+               : ticks[id(t)] ? `<span class="tag ok">applied ${esc(ticks[id(t)])}</span>`
+               : `<span class="tag ${t.tier === "apply" ? "warn" : ""}">${t.tier === "apply" ? "new grad ok" : "reach"}</span>`;
+      const box = `<label class="tick" title="${tracked ? "Logged in tracker.csv" : "Saved in this browser only"}"><input type="checkbox" data-id="${k}" ${done ? "checked" : ""} ${tracked ? "disabled" : ""} aria-label="Applied to ${esc(t.company)} ${esc(t.role)}">applied</label>`;
       const ppl = t.contacts.length ? `<div class="ppl">${t.contacts.map(person).join("")}</div>`
                                     : `<p class="none">No named contact found yet. Apply through the posting.</p>`;
-      return `<article class="job${done ? " done" : ""}"><div class="top"><span class="co">${esc(t.company)}</span>
+      return `<article class="job${done ? " done" : ""}"><div class="top">${box}<span class="co">${esc(t.company)}</span>
         <span class="role">${esc(t.role)}</span> ${st}<a class="go" href="${esc(t.link)}" target="_blank" rel="noopener">Posting &rarr;</a></div>
         <div class="meta">${esc(t.location)}${t.pay ? " · " + esc(t.pay) : ""}</div><p class="why">${esc(t.why)}</p>${ppl}</article>`;
     }).join("") || '<p class="none">Nothing in this filter.</p>';
+    tiles(); drawSync();
   }
   chips.addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { cur = b.dataset.k; draw(); } });
+  document.getElementById("list").addEventListener("change", e => {
+    const cb = e.target.closest("input[type=checkbox][data-id]"); if (!cb) return;
+    const k = D.targets.map(id).find(x => esc(x) === cb.dataset.id); if (!k) return;
+    if (cb.checked) ticks[k] = new Date().toISOString().slice(0, 10); else delete ticks[k];
+    save(); draw();
+  });
   draw();
   document.getElementById("blocked").innerHTML = D.targets.filter(t => t.tier === "blocked").map(t =>
     `<div class="job"><div class="top"><span class="co">${esc(t.company)}</span><span class="role">${esc(t.role)}</span> <span class="tag crit">blocked</span></div>
