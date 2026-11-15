@@ -7,7 +7,7 @@ importance: 2
 category: Projects
 ---
 
-`November 2026` · [Code, data and every figure on GitHub](https://github.com/GeoffreyBian/egg-roulette)
+`November 2026` · [Code, data and every figure on GitHub](https://github.com/GeoffreyBian/egg-roulette) · **[Run the simulation in your browser](https://geoffreybian.github.io/egg-roulette/)**
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -49,6 +49,27 @@ are where the physics lives:
 
 Policies are ACT-style: an MLP predicts chunks of 8 future actions, blended online with temporal ensembling. 80
 policies for the main result, 160 for the ablations, 12,000 test eggs for the robustness grid.
+
+### Run it yourself
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        <a href="https://geoffreybian.github.io/egg-roulette/">{% include figure.html path="assets/img/egg_roulette/live_sim.jpg" title="The live simulator: two policies on the same carton" class="img-fluid rounded z-depth-1" %}</a>
+    </div>
+</div>
+<div class="caption">
+    <a href="https://geoffreybian.github.io/egg-roulette/">Open the live simulator</a>. Works on phones too.
+</div>
+
+The [live version](https://geoffreybian.github.io/egg-roulette/) runs the same MuJoCo model in your browser,
+compiled to WebAssembly and stepped at 500 Hz, with the trained policies running at 30 Hz. Nothing is
+pre-recorded. You pick how the robot was trained: any of the 16 policies from the gain chart, or one of six
+ablation recipes (no action chunks, glove lagging the video, pressure-only touch). Then you change what it
+faces: eggs it never trained on, your own egg weight and crack force, slippery pads, a noisier camera, or
+the touch sensor unplugged. Shift-drag an egg to push it with a spring force, show the contact forces and
+collision geometry, and scrub back through the run. A parity test checks the JavaScript port against the
+Python code. Given the same inputs, the actions match to 2e-7, and the success rates on fresh eggs agree
+within sampling noise.
 
 ### Checking the physics before trusting the learning
 
