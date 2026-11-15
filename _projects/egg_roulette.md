@@ -63,13 +63,15 @@ policies for the main result, 160 for the ablations, 12,000 test eggs for the ro
 
 The [live version](https://geoffreybian.github.io/egg-roulette/) runs the same MuJoCo model in your browser,
 compiled to WebAssembly and stepped at 500 Hz, with the trained policies running at 30 Hz. Nothing is
-pre-recorded. You pick how the robot was trained: any of the 16 policies from the gain chart, or one of six
+pre-recorded. By default each policy sees two 64x64 camera images, ray-cast from the MuJoCo scene in the
+browser, and has to find the egg itself. A corner inset shows the images it got, with a heat map of the
+pixels that most change its next action. You pick how the robot was trained: any of the 16 policies from the gain chart, or one of six
 ablation recipes (no action chunks, glove lagging the video, pressure-only touch). Then you change what it
 faces: eggs it never trained on, your own egg weight and crack force, slippery pads, a noisier camera, or
 the touch sensor unplugged. Shift-drag an egg to push it with a spring force, show the contact forces and
 collision geometry, and scrub back through the run. A parity test checks the JavaScript port against the
-Python code. Given the same inputs, the actions match to 2e-7, and the success rates on fresh eggs agree
-within sampling noise.
+Python code. The browser's camera images match Python's on all but 0.01% of colour values, the actions match to
+2e-7 given the same inputs, and the success rates on fresh eggs agree within sampling noise.
 
 ### Checking the physics before trusting the learning
 
@@ -117,6 +119,22 @@ comes on, past the 3.5 N the gripper needs.
 demos). The robot needs its own touch sensor: a glove-trained policy run on a servo-current estimate gets 5%. Load is
 the useful touch channel, and glove-to-video sync matters more than force calibration.
 
+### From cameras instead of egg position
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/egg_roulette/gain_pixels.png" title="Gain chart from cameras" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+The main results give the policy the egg's position. I retrained all 48 policies of the gain sweep (3 seeds) on two
+64x64 cameras instead, a workspace view and the wrist camera, with a small CNN that turns each image into 32
+keypoints. Touch still adds most of its lift: 41 points over robot demos alone from cameras, against 47 from egg
+position. The 6-point gap shows up at every data size, but with 3 seeds its 95% interval is -3 to 15, so it may
+be noise. All of it is on the touch side: without touch, cameras change nothing (43% vs 44%), while the touch
+policy goes from 90% to 85%, mostly from cracking more raw eggs. One caveat favours touch here: the human demos
+are rendered with the robot's gripper in place of the hand, which a real glove dataset would not get for free.
+
 The [README](https://github.com/GeoffreyBian/egg-roulette#readme) covers the robustness grid, eggs the policy never
 saw, the modelling notes and the limitations: this is simulation, the glove wearer is a scripted controller fitted to
-real glove data, and policies see state rather than pixels.
+real glove data, and the cameras are flat-shaded and noise-free.
