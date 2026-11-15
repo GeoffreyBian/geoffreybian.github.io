@@ -210,6 +210,11 @@ tr.dim td{color:var(--muted)}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
 .chip{font-family:var(--mono);font-size:11.5px;padding:6px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink-2);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--navy);color:var(--ground);border-color:var(--navy)}
+.filters{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:center;margin:0 0 22px}
+.filters .chips{margin:0}
+.filters .fl{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.chip .ct{opacity:.6;margin-left:5px}
+@media (max-width:560px){.filters{grid-template-columns:1fr;gap:6px}.filters .fl{margin-top:6px}}
 .job{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:0 0 12px;box-shadow:var(--shadow)}
 .job.done{opacity:.6}
 .job .tick{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--muted);cursor:pointer;user-select:none}
@@ -250,12 +255,16 @@ tr.dim td{color:var(--muted)}
   <a class="back" href="/dashboards/">&larr; Dashboards</a>
   <header class="head">
     <h1>Apply</h1>
-    <p class="lede">Bay Area postings worth applying to, and who to contact at each.
+    <p class="lede">Bay Area, New York and Canada postings worth applying to, and who to contact at each.
       Every posting was read on the company's own board. Emails marked as guesses are unverified.</p>
     <div class="gen" id="gen"></div>
   </header>
   <div class="tiles" id="tiles"></div>
-  <div class="chips" id="chips"></div>
+  <div class="filters">
+    <span class="fl">Type</span><div class="chips" data-g="tier"></div>
+    <span class="fl">Status</span><div class="chips" data-g="st"></div>
+    <span class="fl">Location</span><div class="chips" data-g="loc"></div>
+  </div>
   <div class="sync" id="sync"></div>
   <div id="list"></div>
   <section><div class="lbl">Not eligible on a TN (US person required)</div><div id="blocked"></div></section>
@@ -285,9 +294,27 @@ function boot(D) {
       ["Applied", live.filter(isDone).length, "of " + live.length + " postings"], ["Warm contact", D.counts.warm, "someone you know there"]
     ].map(([k,v,s]) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join("");
   }
-  const F = [["all","All"],["apply","New grad OK"],["reach","Reaches"],["todo","Not applied"],["warm","Warm contact"]];
-  let cur = "all";
-  const chips = document.getElementById("chips");
+  // Three independent filters, ANDed. Region comes from the free-text location;
+  // a posting listing two cities ("Toronto, ON / Sunnyvale") counts in both.
+  const REG = [["bay","Bay Area",/san francisco|sunnyvale|santa clara|palo alto|mountain view|san mateo|san jose|redwood city|foster city|cupertino|fremont|oakland|hayward|san bruno|brisbane|menlo park|milpitas|berkeley|emeryville|burlingame|bay area/i],
+               ["ny","New York",/new york|brooklyn|\bnyc\b|, ny\b/i],
+               ["ca","Canada",/canada|, on\b|, bc\b|, qc\b|toronto|vancouver|ottawa|markham|waterloo|montreal|montr\u00e9al/i]];
+  const regionsOf = t => REG.filter(([, , re]) => re.test(t.location || "")).map(([k]) => k);
+  const G = {
+    tier: [["all","All"],["apply","New grad OK"],["reach","Reaches"],["warm","Warm contact"]],
+    st:   [["all","All"],["todo","Not applied"],["done","Applied"]],
+    loc:  [["all","All"], ...REG.map(([k,l]) => [k,l]), ["other","Other"]],
+  };
+  const test = {
+    tier: (t, k) => k === "all" || t.tier === k || (k === "warm" && t.contacts.some(p => p.warm)),
+    st:   (t, k) => k === "all" || (k === "done") === isDone(t),
+    loc:  (t, k) => { const r = regionsOf(t); return k === "all" || (k === "other" ? !r.length : r.includes(k)); },
+  };
+  const FSTORE = "apply-board-filters";
+  let sel = { tier: "all", st: "all", loc: "all" };
+  try { Object.assign(sel, JSON.parse(localStorage.getItem(FSTORE) || "{}")); } catch (e) {}
+  for (const g in G) if (!G[g].some(([k]) => k === sel[g])) sel[g] = "all";
+  const passes = (t, skip) => Object.keys(G).every(g => g === skip || test[g](t, sel[g]));
   const sync = document.getElementById("sync");
   function drawSync() {
     const p = pending();
@@ -310,9 +337,14 @@ function boot(D) {
       ${p.confidence ? `<div class="n">Email: ${esc(p.confidence)}</div>` : ""}${p.notes ? `<div class="n">${esc(p.notes)}</div>` : ""}</div>`;
   }
   function draw() {
-    chips.innerHTML = F.map(([k,l]) => `<button class="chip" aria-pressed="${k===cur}" data-k="${k}">${l}</button>`).join("");
-    const rows = D.targets.filter(t => t.tier !== "blocked").filter(t =>
-      cur === "all" || t.tier === cur || (cur === "todo" && !isDone(t)) || (cur === "warm" && t.contacts.some(p => p.warm)));
+    const live = D.targets.filter(t => t.tier !== "blocked");
+    // Each chip's count is what you'd see if you picked it, given the other two filters.
+    for (const g in G) {
+      const base = live.filter(t => passes(t, g));
+      document.querySelector(`.chips[data-g="${g}"]`).innerHTML = G[g].map(([k,l]) =>
+        `<button class="chip" aria-pressed="${k===sel[g]}" data-k="${k}">${l}<span class="ct">${base.filter(t => test[g](t, k)).length}</span></button>`).join("");
+    }
+    const rows = live.filter(t => passes(t));
     document.getElementById("list").innerHTML = rows.map((t, n) => {
       const done = isDone(t), tracked = inTracker(t), k = esc(id(t));
       const st = tracked ? `<span class="tag ok">${esc(t.status)}${t.applied ? " " + esc(t.applied) : ""}</span>`
@@ -327,7 +359,12 @@ function boot(D) {
     }).join("") || '<p class="none">Nothing in this filter.</p>';
     tiles(); drawSync();
   }
-  chips.addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { cur = b.dataset.k; draw(); } });
+  document.querySelector(".filters").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    sel[b.parentElement.dataset.g] = b.dataset.k;
+    try { localStorage.setItem(FSTORE, JSON.stringify(sel)); } catch (err) {}
+    draw();
+  });
   document.getElementById("list").addEventListener("change", e => {
     const cb = e.target.closest("input[type=checkbox][data-id]"); if (!cb) return;
     const k = D.targets.map(id).find(x => esc(x) === cb.dataset.id); if (!k) return;
